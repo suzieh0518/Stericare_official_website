@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="스테리케어">
+<meta property="og:description" content="감염관리형 의료세탁 & 멸균 서비스">
+<meta property="og:image" content="img/exterior.jpg">
+<link rel="icon" href="img/logo.png">
+<title>스테리케어 | 감염관리형 의료세탁 & 멸균 서비스</title>
+<meta name="description" content="스테리케어는 감염관리형 의료세탁 & 멸균 서비스 전문기업입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+@font-face{font-family:"NanumSquare";font-weight:300;font-style:normal;font-display:swap;src:url(fonts/NanumSquareL.woff2) format("woff2")}
+@font-face{font-family:"NanumSquare";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/NanumSquareR.woff2) format("woff2")}
+@font-face{font-family:"NanumSquare";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/NanumSquareR.woff2) format("woff2")}
+@font-face{font-family:"NanumSquare";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/NanumSquareB.woff2) format("woff2")}
+@font-face{font-family:"NanumSquare";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/NanumSquareB.woff2) format("woff2")}
+@font-face{font-family:"NanumSquare";font-weight:800;font-style:normal;font-display:swap;src:url(fonts/NanumSquareEB.woff2) format("woff2")}
+/* Layout: 세탁 공장의 질서. 좌측 정렬 그리드, 설비 사양표와 현장 사진으로 신뢰를 보여줌 */
+:root{
+  --bg:#faf7f4;
+  --surface:#ffffff;
+  --ink:#241b15;
+  --muted:#6e6158;
+  --line:#eadfd5;
+  --accent:#b35a21;      /* 로고 주황(#C66F30)을 본문 대비에 맞게 살짝 깊게 */
+  --accent-soft:#f6e6d9;
+  --steel:#2b231e;
+  --on-accent:#ffffff;
+  --accent-strong:#94481a;
+  --map-off:#efe7df;
+  --map-hover:#e6d9cc;
+  --map-line:#ffffff;
+  --f-display:"NanumSquare","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"NanumSquare","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#16120f;--surface:#1f1915;--ink:#f1e9e2;--muted:#b3a397;--line:#352a22;
+  --accent:#e58f52;--accent-soft:#3a2617;--steel:#0e0b09;--on-accent:#1a0c03;--accent-strong:#f0a670;--map-off:#2a221c;--map-hover:#362b23;--map-line:#16120f;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16120f;--surface:#1f1915;--ink:#f1e9e2;--muted:#b3a397;--line:#352a22;
+  --accent:#e58f52;--accent-soft:#3a2617;--steel:#0e0b09;--on-accent:#1a0c03;--accent-strong:#f0a670;--map-off:#2a221c;--map-hover:#362b23;--map-line:#16120f;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p,ul,ol,figure{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.draft-note{background:var(--accent-soft);color:var(--ink);font-size:13px;text-align:center;padding:6px 16px}
+.ph{background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:500;padding:1px 6px;border-radius:3px;margin-left:6px;white-space:nowrap}
+.muted{color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin-top:14px}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{display:block}
+.logo img{width:150px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:500;padding:12px 22px;border-radius:4px;font-size:15px;border:1px solid var(--accent);cursor:pointer;font-family:inherit}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.sm{padding:8px 16px;font-size:14px}
+
+/* navigation */
+.gnb>ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.gnb>ul>li{position:relative}
+.gnb .top{display:block;padding:20px 14px;text-decoration:none;font-size:15.5px;font-weight:700;color:var(--ink)}
+.gnb .top.on,.gnb .top:hover{color:var(--accent)}
+.gnb .sub{position:absolute;left:50%;top:100%;transform:translateX(-50%);min-width:170px;list-style:none;margin:0;padding:8px 0;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:0 0 6px 6px;box-shadow:0 12px 30px -18px rgba(60,30,10,.4);opacity:0;visibility:hidden;transition:opacity .15s}
+.gnb li:hover>.sub,.gnb li:focus-within>.sub{opacity:1;visibility:visible}
+.gnb .sub a{display:block;padding:9px 18px;text-decoration:none;font-size:14.5px;color:var(--muted);white-space:nowrap;text-align:center}
+.gnb .sub a:hover{color:var(--accent);background:var(--accent-soft)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:4px;background:transparent;cursor:pointer;padding:12px 11px;flex-direction:column;justify-content:space-between}
+.burger span{display:block;height:2px;background:var(--ink)}
+.mnav{border-top:1px solid var(--line);background:var(--surface);max-height:calc(100vh - 64px);overflow-y:auto}
+.mnav .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-block:20px}
+.mgrp{display:grid;gap:6px;align-content:start}
+.mgrp strong{font-size:15px;color:var(--accent)}
+.mgrp a{text-decoration:none;font-size:14.5px;color:var(--ink)}
+@media (max-width:1000px){.gnb{display:none}.burger{display:flex}}
+@media (min-width:1001px){.mnav{display:none!important}}
+/* sub pages */
+.banner{background:var(--steel);color:#f1e9e2;padding-block:48px 44px}
+.banner h1{font-size:clamp(28px,4vw,42px);color:#fff;font-weight:800;margin-top:8px}
+.crumb{font-size:13.5px;color:#cdbfb4}
+.crumb a{color:#cdbfb4;text-decoration:none}
+.tabs{border-bottom:1px solid var(--line);background:var(--surface)}
+.tabs .wrap{display:flex;gap:0;overflow-x:auto}
+.tabs a{flex:none;padding:16px 22px;text-decoration:none;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent}
+.tabs a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.view>section:first-of-type,.view>.banner+section,.view>.tabs+section{border-top:0}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.quick a{display:grid;gap:8px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;min-width:0;transition:border-color .15s}
+.quick a:hover{border-color:var(--accent)}
+.quick strong{font-size:19px;font-family:var(--f-display)}
+.quick small{color:var(--muted);font-size:14px}
+@media (max-width:860px){.quick{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.quick{grid-template-columns:1fr}.mnav .wrap{grid-template-columns:1fr}}
+.locs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.locs .addr{font-size:18px;font-weight:700;margin-top:10px}
+.locs .muted{font-size:14.5px;margin-top:4px}
+.maplinks{display:flex;gap:16px;margin-top:16px;font-size:14.5px;font-weight:700}
+.maplinks a{color:var(--accent);text-decoration:none}
+@media (max-width:760px){.locs{grid-template-columns:1fr}}
+.board{border-top:2px solid var(--ink)}
+.board-head{display:grid;grid-template-columns:80px 1fr 120px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+.board .empty{padding:48px 0;text-align:center;color:var(--muted);border-bottom:1px solid var(--line)}
+.faq{border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;padding:20px 0;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 22px;color:var(--muted);max-width:60em}
+
+/* hero */
+.hero{padding-block:72px 96px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(30px,4.6vw,52px);font-weight:800;margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:20px;font-size:18px;color:var(--muted);max-width:32em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero figure{position:relative;border-radius:6px;overflow:hidden;min-width:0}
+.hero figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.hero figcaption{position:absolute;left:12px;bottom:12px;background:rgba(20,14,10,.72);color:#fff;font-size:13px;padding:5px 10px;border-radius:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.stat{padding:22px 20px 22px 0;min-width:0}
+.stat + .stat{padding-left:20px;border-left:1px solid var(--line)}
+.stat strong{display:block;font-family:var(--f-display);font-size:clamp(24px,3vw,34px);font-variant-numeric:tabular-nums;line-height:1.2}
+.stat strong small{font-size:.55em;font-weight:600;margin-left:2px}
+.stat span{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding-block:44px 64px}}
+@media (max-width:700px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){padding-left:0;border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections */
+section{padding-block:88px}
+section + section{border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:end;margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px);margin-top:12px}
+.sec-head p{color:var(--muted)}
+.sub{font-size:20px;margin:56px 0 20px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:14px}section{padding-block:64px}}
+
+/* why */
+.why-band{background:var(--steel);color:#f1e9e2}
+.why-band .eyebrow{color:#f2a56d}
+.why-band h2{color:#fff}
+.why-band .sec-head p{color:#cdbfb4}
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-family:var(--f-display);font-weight:600;font-size:clamp(16px,2vw,20px);margin-bottom:36px}
+.formula span{border:1px solid #5a4a3f;border-radius:4px;padding:8px 14px}
+.formula i{font-style:normal;color:#f2a56d}
+.formula b{color:#f2a56d}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar{background:#352b24;border-radius:6px;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.pillar .body{padding:24px 24px 28px;display:grid;gap:12px}
+.pillar .spec{font-family:var(--f-mono);font-size:12.5px;color:#f2a56d;letter-spacing:.04em}
+.pillar h3{font-size:22px;color:#fff}
+.pillar ul{padding-left:18px;color:#d9ccc2;font-size:15px;display:grid;gap:6px}
+.pillar img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.pillar .noimg{aspect-ratio:16/10;display:grid;place-items:center;background:#2f2620;color:#8f7f73;font-size:13px}
+.base{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border-top:1px solid #4a3d34}
+.base div{padding:22px 20px 0 0;min-width:0}
+.base div + div{padding-left:20px;border-left:1px solid #4a3d34}
+.base h4{font-size:17px;color:#fff}
+.base p{margin-top:6px;font-size:14px;color:#cdbfb4}
+@media (max-width:900px){.pillars{grid-template-columns:1fr}.base{grid-template-columns:1fr 1fr}.base div:nth-child(3){padding-left:0;border-left:0}.base div{padding-bottom:20px}}
+@media (max-width:520px){.base{grid-template-columns:1fr}.base div + div{padding-left:0;border-left:0;border-top:1px solid #4a3d34}}
+
+.home-why .sec-head{grid-template-columns:1fr;margin-bottom:28px}
+.home-why .pillar .body{gap:6px}
+.home-why .more{display:inline-block;margin-top:32px;color:#f2a56d;font-weight:700;text-decoration:none}
+.home-why .more:hover{text-decoration:underline}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
+.about-one{max-width:760px}
+.about-grid > *{min-width:0}
+.kv{border-top:2px solid var(--ink)}
+.kv div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.kv dt{color:var(--muted);font-size:14px}
+.kv dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.kv dl{margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.badge{border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:500}
+.org{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px}
+.org h3{font-size:19px}
+.org .total{font-family:var(--f-display);font-size:40px;color:var(--accent);font-weight:700;line-height:1.1;margin-top:10px;font-variant-numeric:tabular-nums}
+.org table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14.5px}
+.org td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.org td:last-child{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:12px}
+.org td small{display:block;color:var(--muted);font-size:13px}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.principles div{border-top:2px solid var(--accent);padding-top:14px;min-width:0}
+.principles h4{font-size:17px}
+.principles p{margin-top:6px;font-size:14.5px;color:var(--muted)}
+@media (max-width:860px){.about-grid,.principles{grid-template-columns:1fr}}
+
+/* capacity */
+.cap{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.cap > *{min-width:0}
+.big{display:grid;gap:20px}
+.big div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px}
+.big strong{display:block;font-family:var(--f-display);font-size:44px;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
+.big span{display:block;margin-top:6px;font-weight:500}
+.big p{font-size:14px;color:var(--muted);margin-top:4px}
+.tbl{overflow-x:auto;border-top:2px solid var(--ink)}
+.tbl table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+.tbl th,.tbl td{text-align:left;padding:11px 10px 11px 0;border-bottom:1px solid var(--line)}
+.tbl th{font-weight:500;color:var(--muted);font-size:13px}
+.tbl td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr.sum td{font-weight:700}
+@media (max-width:860px){.cap{grid-template-columns:1fr}.big{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.big{grid-template-columns:1fr}}
+
+/* process */
+.process{display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--ink)}
+.step{padding:22px 16px 24px 0;min-width:0}
+.step + .step{padding-left:16px;border-left:1px solid var(--line)}
+.step .no{font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
+.step h3{font-size:18px;margin-top:8px}
+.step ul{margin-top:8px;padding-left:16px;color:var(--muted);font-size:14px;display:grid;gap:4px}
+.sterile{margin-top:24px;background:var(--accent-soft);border-radius:6px;padding:18px 22px;font-size:15px}
+.sterile strong{color:var(--accent)}
+@media (max-width:1000px){.process{grid-template-columns:repeat(3,1fr)}.step:nth-child(4){padding-left:0;border-left:0}.step:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:560px){.process{grid-template-columns:1fr}.step + .step{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* quality */
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;min-width:0}
+.card .eyebrow{font-size:11px}
+.card h3{font-size:19px;margin-top:6px}
+.card ul{margin-top:10px;padding-left:18px;color:var(--muted);font-size:14.5px;display:grid;gap:6px}
+.tags{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tags figure{min-width:0}
+.tags img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
+.tags figcaption{font-size:14px;margin-top:8px;font-weight:500}
+.inout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:20px}
+.inout > *{min-width:0}
+.inout img{border-radius:4px;width:100%}
+@media (max-width:860px){.qgrid{grid-template-columns:1fr}.tags{grid-template-columns:1fr 1fr}.inout{grid-template-columns:1fr}}
+
+/* response */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+.stages div{padding:20px 18px 22px 0;min-width:0}
+.stages div + div{padding-left:18px;border-left:1px solid var(--line)}
+.stages .no{font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
+.stages h4{font-size:18px;margin-top:6px}
+.stages p{font-size:14.5px;color:var(--muted);margin-top:6px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px;font-weight:500}
+.flow span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.flow i{font-style:normal;color:var(--accent)}
+@media (max-width:760px){.stages{grid-template-columns:1fr}.stages div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery figure{min-width:0;position:relative}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.gallery figcaption{font-size:13.5px;margin-top:6px;color:var(--muted)}
+.gallery .wide{grid-column:span 2}
+.gallery .wide img{aspect-ratio:8/3}
+@media (max-width:860px){.gallery{grid-template-columns:1fr 1fr}}
+
+/* service area */
+.area-head{text-align:center;margin-bottom:40px}
+.area-head h2{font-size:clamp(24px,3.6vw,40px);margin-top:14px;line-height:1.45}
+.area-head .lt{font-weight:300}
+.area-head strong{font-weight:800}
+.area-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}
+.area-grid > *{min-width:0}
+.map{width:100%;height:auto;display:block}
+.rg{fill:var(--map-off);stroke:var(--map-line);stroke-width:1.2;stroke-linejoin:round;transition:fill .2s}
+.rg.on{fill:var(--accent)}
+.rg:hover{fill:var(--map-hover)}
+.rg.on:hover{fill:var(--accent-strong)}
+.lb{font-family:var(--f-body);font-size:13px;fill:var(--muted);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.lb.on{font-size:19px;font-weight:800;fill:var(--on-accent)}
+.fac circle{fill:var(--ink)}
+.fac .pulse{fill:var(--ink);opacity:.18}
+.fac text{font-family:var(--f-body);font-size:14px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.area-side h3{font-size:22px}
+.area-list{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:0;border-top:2px solid var(--ink)}
+.area-list li{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:18px}
+.area-list .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none;align-self:center}
+.area-list small{margin-left:auto;color:var(--muted);font-size:14px}
+.area-side .btn{margin-top:22px}
+@media (max-width:860px){.area-grid{grid-template-columns:1fr}.lb{font-size:15px}.lb.on{font-size:22px}}
+@media (prefers-reduced-motion:no-preference){.fac .pulse{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}@keyframes pulse{0%{transform:scale(.6);opacity:.35}100%{transform:scale(1.8);opacity:0}}}
+
+/* history */
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:0 0 24px 24px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.timeline time{font-family:var(--f-mono);font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.timeline li{grid-template-columns:1fr;gap:2px}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact > *{min-width:0}
+form{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;gap:16px}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}
+input,select,textarea{font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.formmsg{font-size:14px;color:var(--accent)}
+.agree{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:13.5px;color:var(--muted)}
+.agree input{width:auto;margin-top:4px}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:520px){.two{grid-template-columns:1fr}.kv div{grid-template-columns:84px 1fr}}
+
+footer{background:var(--surface);border-top:1px solid var(--line);padding-block:40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:grid;gap:12px}
+footer img{width:130px}
+footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home" aria-label="스테리케어 홈"><img src="img/logo.png" alt="스테리케어" width="150" height="32"></a>
+    <nav class="gnb" aria-label="주 메뉴"><ul><li><a class="top" href="#about">스테리케어 소개</a><ul class="sub"><li><a href="#about">회사소개</a></li><li><a href="#why">선택 이유</a></li><li><a href="#history">연혁</a></li><li><a href="#location">오시는 길</a></li></ul></li><li><a class="top" href="#area">서비스안내</a><ul class="sub"><li><a href="#area">서비스 지역안내</a></li><li><a href="#quality">품질관리</a></li></ul></li><li><a class="top" href="#cleanzone">시설현황</a><ul class="sub"><li><a href="#cleanzone">감염관리 클린존</a></li><li><a href="#equipment">보유장비&amp;설비</a></li></ul></li><li><a class="top" href="#notice">고객센터</a><ul class="sub"><li><a href="#notice">공지사항</a></li><li><a href="#faq">FAQ</a></li></ul></li><li><a class="top" href="#apply">Contact</a><ul class="sub"><li><a href="#apply">서비스 신청하기</a></li></ul></li><li><a class="top" href="#system">세탁관리시스템</a></li></ul></nav>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mnav" id="mnav" hidden><div class="wrap"><div class="mgrp"><strong>스테리케어 소개</strong><a href="#about">회사소개</a><a href="#why">선택 이유</a><a href="#history">연혁</a><a href="#location">오시는 길</a></div><div class="mgrp"><strong>서비스안내</strong><a href="#area">서비스 지역안내</a><a href="#quality">품질관리</a></div><div class="mgrp"><strong>시설현황</strong><a href="#cleanzone">감염관리 클린존</a><a href="#equipment">보유장비&amp;설비</a></div><div class="mgrp"><strong>고객센터</strong><a href="#notice">공지사항</a><a href="#faq">FAQ</a></div><div class="mgrp"><strong>Contact</strong><a href="#apply">서비스 신청하기</a></div><div class="mgrp"><strong>세탁관리시스템</strong><a href="#system">세탁관리시스템</a></div></div></div>
+</header>
+
+<main id="top">
+  <div class="view" data-view="home">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Total Infection Control Laundry Solution</div>
+          <h1>지속가능한<br><em>감염관리형</em> 의료세탁 &amp; 멸균 서비스</h1>
+          <p class="lead">병원 세탁물, 세탁부터 멸균까지 한 곳에서 책임집니다.</p>
+          <div class="actions">
+            <a class="btn" href="#apply">세탁 위탁 상담</a>
+            <a class="btn ghost" href="#why">선택 이유 보기</a>
+          </div>
+        </div>
+        <figure>
+          <img src="img/exterior.jpg" alt="스테리케어 김포 공장 외부 전경" width="1400" height="933">
+          <figcaption>김포 세탁·멸균 공장</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <section class="why-band home-why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Why SteriCare</div><h2>세탁 품질은 설비에서 갈립니다</h2></div>
+      </div>
+      <div class="formula" aria-label="세탁 품질 공식">
+        <span>단독 세탁기</span><i>+</i><span>액상세제 자동공급</span><i>+</i><span>스팀 전용 건조기</span><i>→</i><b>타사 대비 높은 세탁 품질</b>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <img src="img/washers-1.jpg" alt="In-Out 분리형 단독 세탁기" width="684" height="516">
+          <div class="body">
+            <div class="spec">IN-OUT 분리형 · 총 7대</div>
+            <h3>단독 세탁기</h3>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="noimg">사진 준비 중</div>
+          <div class="body">
+            <div class="spec">정량 자동 투입 시스템</div>
+            <h3>액상세제 자동공급</h3>
+          </div>
+        </article>
+        <article class="pillar">
+          <img src="img/washers-2.jpg" alt="세탁 및 건조 설비" width="688" height="514">
+          <div class="body">
+            <div class="spec">100KG · 4대</div>
+            <h3>스팀 전용 건조기</h3>
+          </div>
+        </article>
+      </div>
+      <a class="more" href="#why">선택 이유 자세히 보기 →</a>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Service</div><h2>바로가기</h2></div>
+      </div>
+      <div class="quick">
+        <a href="#quality"><span class="eyebrow">01</span><strong>품질관리</strong></a>
+        <a href="#cleanzone"><span class="eyebrow">02</span><strong>감염관리 클린존</strong></a>
+        <a href="#area"><span class="eyebrow">03</span><strong>서비스 지역안내</strong></a>
+        <a href="#apply"><span class="eyebrow">04</span><strong>서비스 신청하기</strong></a>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="about" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 스테리케어 소개 › 회사소개</div><h1>회사소개</h1></div></div>
+    <nav class="tabs" aria-label="스테리케어 소개 하위 메뉴"><div class="wrap"><a href="#about" data-tab="about">회사소개</a><a href="#why" data-tab="why">선택 이유</a><a href="#history" data-tab="history">연혁</a><a href="#location" data-tab="location">오시는 길</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">About</div><h2>의료기관 세탁물 처리 및 멸균 서비스 전문기업</h2></div>
+        <p>스테리케어는 의료기관 세탁물만 다룹니다. 수거부터 세탁, 검수, 멸균, 납품까지 한 회사가 책임지고, 병원마다 전담 담당자를 두어 한 창구에서 응대합니다.</p>
+      </div>
+      <div class="about-one">
+        <div>
+          <dl class="kv">
+            <div><dt>회사명</dt><dd>스테리케어 / (주)비앤에스파트너</dd></div>
+            <div><dt>사업분야</dt><dd>의료기관 세탁물 처리업 및 멸균 서비스</dd></div>
+            <div><dt>공장</dt><dd>경기도 김포시 통진읍 귀전로154번길 93</dd></div>
+            <div><dt>주요 고객</dt><dd>부천·인천세종병원, 경기도의료원(파주), 뉴고려병원, 일산중심재활병원 등</dd></div>
+          </dl>
+          <div class="badges">
+            <span class="badge">ISO 13485 인증 기반 시설</span>
+            <span class="badge">KHF 혁신상 수상 (2023)</span>
+          </div>
+        </div>
+      </div>
+      <div class="principles">
+        <div><h4>병원 전담 담당자</h4><p>수거, 납품, 클레임을 하나의 창구에서 처리합니다.</p></div>
+        <div><h4>품질책임자 제도</h4><p>품질 문제는 작업자가 임의로 판단하지 않고 품질책임자가 최종 결정합니다.</p></div>
+        <div><h4>주간 품질회의</h4><p>매주 월요일 개선과제를 정하고, 다음 주에 효과를 평가합니다.</p></div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="why" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 스테리케어 소개 › 선택 이유</div><h1>선택 이유</h1></div></div>
+    <nav class="tabs" aria-label="스테리케어 소개 하위 메뉴"><div class="wrap"><a href="#about" data-tab="about">회사소개</a><a href="#why" data-tab="why">선택 이유</a><a href="#history" data-tab="history">연혁</a><a href="#location" data-tab="location">오시는 길</a></div></nav>
+
+  <section class="why-band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Why SteriCare</div><h2>세탁 품질은 설비에서 갈립니다</h2></div>
+        <p>대형 연속식 세탁기에 여러 병원 세탁물을 함께 돌리지 않습니다. 단독 세탁기, 세제 자동공급, 스팀 건조기를 갖춰 병원마다, 품목마다 맞는 공정으로 세탁합니다.</p>
+      </div>
+      <div class="formula" aria-label="세탁 품질 공식">
+        <span>단독 세탁기</span><i>+</i><span>액상세제 자동공급</span><i>+</i><span>스팀 전용 건조기</span><i>→</i><b>타사 대비 높은 세탁 품질</b>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <img src="img/washers-1.jpg" alt="In-Out 분리형 단독 세탁기" width="684" height="516">
+          <div class="body">
+            <div class="spec">IN-OUT 분리형 · 총 7대</div>
+            <h3>단독 세탁기</h3>
+            <ul>
+              <li>병원별·품목별로 나누어 단독 세탁</li>
+              <li>품목별 자동 세팅 프로그램(시간·온도·세제) 적용</li>
+              <li>투입·배출 구역을 벽으로 분리해 감염과 세탁 후 재오염 차단</li>
+            </ul>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="noimg">사진 준비 중</div>
+          <div class="body">
+            <div class="spec">정량 자동 투입 시스템</div>
+            <h3>액상세제 자동공급</h3>
+            <ul>
+              <li>품목별 적정 세제량을 자동으로 투입</li>
+              <li>세제 부족 투입으로 생기는 얼룩 방지</li>
+              <li>섬유 손상을 줄여 린넨 수명 연장</li>
+            </ul>
+          </div>
+        </article>
+        <article class="pillar">
+          <img src="img/washers-2.jpg" alt="세탁 및 건조 설비" width="688" height="514">
+          <div class="body">
+            <div class="spec">100KG · 4대</div>
+            <h3>스팀 전용 건조기</h3>
+            <ul>
+              <li>스팀 열원으로 섬유 손상 최소화</li>
+              <li>품목별 건조 온도·습도·냉각시간 관리</li>
+              <li>냄새·황변·구김 방지</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="base">
+        <div><h4>청정 지하수 사용</h4><p>재사용수를 쓰지 않고 하루 100톤 이상의 지하수를 확보했습니다.</p></div>
+        <div><h4>감염 예방 설계</h4><p>투입(IN)·배출(OUT) 구역 분리, 오염 세탁물 전용 세탁기 2대 운영.</p></div>
+        <div><h4>섬유 전문 인력</h4><p>병원 린넨의 문제점을 분석하고 품목별 맞춤 공정과 개선안을 제안합니다.</p></div>
+        <div><h4>체계적인 품질관리</h4><p>품질책임자 제도와 매주 품질회의로 불량 원인을 찾아 개선합니다.</p></div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="history" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 스테리케어 소개 › 연혁</div><h1>연혁</h1></div></div>
+    <nav class="tabs" aria-label="스테리케어 소개 하위 메뉴"><div class="wrap"><a href="#about" data-tab="about">회사소개</a><a href="#why" data-tab="why">선택 이유</a><a href="#history" data-tab="history">연혁</a><a href="#location" data-tab="location">오시는 길</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">History</div><h2>연혁</h2></div>
+        <p>의료기관 전문 세탁 &amp; 멸균 시설로 출발했습니다.</p>
+      </div>
+      <ol class="timeline">
+        <li><time>2023</time><span>의료폐기물 절감 및 수명연장 서비스로 KHF 혁신상 수상</span></li>
+        <li><time>2023.07</time><span>ISO 13485 의료기기 품질경영시스템 인증<br>한국산업기술진흥원 신뢰성기반활용사업자 선정</span></li>
+        <li><time>2023.04</time><span>의료기관 전문 세탁 &amp; 멸균 서비스 스테리케어 설립</span></li>
+      </ol>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="location" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 스테리케어 소개 › 오시는 길</div><h1>오시는 길</h1></div></div>
+    <nav class="tabs" aria-label="스테리케어 소개 하위 메뉴"><div class="wrap"><a href="#about" data-tab="about">회사소개</a><a href="#why" data-tab="why">선택 이유</a><a href="#history" data-tab="history">연혁</a><a href="#location" data-tab="location">오시는 길</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Location</div><h2>오시는 길</h2></div>
+        <p>본사는 부천, 세탁·멸균 공장은 김포에 있습니다.</p>
+      </div>
+      <div class="locs">
+        <div class="card"><div class="eyebrow">Factory</div><h3>김포 공장</h3><p class="addr">경기도 김포시 통진읍 귀전로154번길 93</p><p class="muted">세탁 · 건조 · 다림질 · 수선 · 멸균</p><div class="maplinks"><a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%ED%86%B5%EC%A7%84%EC%9D%8D%20%EA%B7%80%EC%A0%84%EB%A1%9C154%EB%B2%88%EA%B8%B8%2093" target="_blank" rel="noopener">네이버 지도 ↗</a><a href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%ED%86%B5%EC%A7%84%EC%9D%8D%20%EA%B7%80%EC%A0%84%EB%A1%9C154%EB%B2%88%EA%B8%B8%2093" target="_blank" rel="noopener">카카오맵 ↗</a></div></div>
+        <div class="card"><div class="eyebrow">Head Office</div><h3>부천 본사</h3><p class="addr">경기도 부천시 부천로29번길 17, 3층</p><p class="muted">계약 · 정산 · 고객 상담</p><div class="maplinks"><a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%B6%80%EC%B2%9C%EB%A1%9C29%EB%B2%88%EA%B8%B8%2017" target="_blank" rel="noopener">네이버 지도 ↗</a><a href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%B6%80%EC%B2%9C%EB%A1%9C29%EB%B2%88%EA%B8%B8%2017" target="_blank" rel="noopener">카카오맵 ↗</a></div></div>
+      </div>
+      <dl class="kv" style="margin-top:32px"><div><dt>대표번호</dt><dd>032-614-6592</dd></div><div><dt>팩스</dt><dd>032-612-6595</dd></div></dl>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="area" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 서비스안내 › 서비스 지역안내</div><h1>서비스 지역안내</h1></div></div>
+    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질관리</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="area-head">
+        <div class="eyebrow">Service Area</div>
+        <h2><span class="lt">의료세탁 전문기업 스테리케어는</span><br><strong>세탁물의 수거에서 납품까지</strong> <span class="lt">최선을 다하겠습니다.</span></h2>
+      </div>
+      <div class="area-grid">
+        <div class="map-box"><svg class="map" viewBox="-10 -10 820 767" role="img" aria-label="수도권 서비스 지역 지도. 인천, 부천, 김포, 고양, 파주가 주요 서비스 지역으로 표시되어 있습니다.">
+<path class="rg" d="M337.4,391.1L352.8,373.5L351.3,368.4L353.7,364.5L375.3,381.2L385.4,378.9L388.8,370.6L389.7,373.3L394.9,372.7L400.3,343.6L397.2,340.7L405.3,342.4L415.7,335.6L419.7,339.2L421.3,351.0L430.1,348.4L431.8,345.4L429.2,337.0L435.2,331.2L434.6,324.3L441.4,321.5L444.5,312.6L449.7,312.8L451.9,317.7L458.7,316.5L459.6,320.5L471.3,315.5L478.9,319.2L477.4,340.6L485.4,344.3L485.8,349.6L482.4,355.2L487.9,357.5L488.5,363.1L487.7,370.4L481.1,380.1L482.7,390.5L513.5,377.3L516.1,394.8L507.5,396.9L500.1,409.4L498.3,418.1L506.8,421.2L500.7,433.2L494.7,434.8L494.6,438.0L491.5,437.8L487.8,443.2L483.3,441.2L477.9,444.7L473.0,452.6L468.6,452.4L468.3,458.2L460.1,459.5L453.1,453.7L452.5,440.2L444.1,445.3L439.4,438.5L427.1,445.6L422.1,453.1L412.4,455.6L407.4,448.2L396.5,456.5L381.9,423.8L372.3,431.0L371.9,435.1L358.7,434.6L362.4,427.5L358.0,422.9L361.7,419.7L364.6,406.6L361.7,399.2L354.4,397.7L350.1,401.7L348.7,397.5L337.4,391.1Z"><title>서울</title></path><path class="rg on" d="M256.3,373.4L273.2,363.8L278.0,365.5L282.8,352.0L287.2,352.1L289.5,345.9L307.4,356.2L312.1,360.8L311.6,365.3L316.5,365.1L320.7,371.5L328.7,371.2L331.9,378.0L338.6,373.4L349.8,377.0L342.3,385.6L343.0,388.7L338.0,390.9L335.5,412.4L329.4,413.0L327.6,416.3L328.0,428.0L343.7,438.0L343.5,447.3L339.1,451.3L339.9,458.8L332.8,462.6L330.5,470.8L327.0,464.5L328.6,474.3L318.9,484.2L303.0,482.3L308.4,484.8L308.5,488.3L299.2,500.6L289.6,499.7L294.0,503.9L276.8,506.1L273.0,503.1L259.8,503.2L259.8,499.1L290.1,498.6L273.4,485.4L270.5,478.1L271.1,466.2L262.6,464.3L262.7,460.4L267.4,464.1L270.5,460.4L281.1,460.3L281.9,469.6L286.0,469.8L281.8,458.4L271.4,458.6L273.5,454.5L270.4,452.7L274.9,451.0L271.6,449.0L272.6,446.1L267.5,454.2L264.1,452.4L264.3,445.3L268.3,444.2L265.3,443.6L267.3,430.9L284.4,422.5L283.8,418.8L280.6,418.7L278.4,422.5L269.0,423.2L265.7,394.8L269.8,391.6L262.2,386.6L256.3,373.4ZM326.1,462.6L327.3,463.3L326.5,461.7L326.1,462.6ZM272.3,433.4L268.5,442.4L277.7,443.3L273.2,439.0L277.6,438.9L272.3,433.4ZM162.6,444.3L164.3,435.4L170.8,435.8L189.0,422.8L211.7,421.6L221.8,417.0L225.2,402.8L231.0,402.6L241.8,409.4L243.4,407.4L239.3,404.2L244.1,395.7L257.3,398.1L256.5,409.6L244.5,407.9L242.5,410.3L252.1,413.3L259.5,426.5L251.7,432.1L226.4,439.9L218.6,450.1L200.1,463.4L190.1,463.0L187.4,465.9L190.2,462.4L186.4,454.7L182.3,456.7L183.4,453.4L179.6,450.0L173.9,455.2L166.9,452.1L169.9,450.6L168.2,444.4L162.6,444.3ZM160.1,265.1L176.1,255.7L178.0,246.8L187.7,247.7L193.1,242.5L197.6,243.9L204.9,254.6L227.3,269.0L229.3,279.8L235.7,287.9L229.9,303.3L235.2,312.3L231.7,327.1L238.0,331.9L234.0,338.5L239.5,354.9L243.2,357.3L231.2,364.7L230.3,368.0L234.5,368.3L232.1,371.3L235.5,374.5L229.0,377.0L225.8,372.2L230.0,370.7L230.1,367.7L225.6,369.0L216.1,364.5L208.0,372.9L182.9,370.2L169.1,360.5L172.1,356.9L170.6,350.6L167.0,348.4L180.7,345.6L186.1,338.2L183.3,326.4L176.6,318.3L177.9,315.6L164.4,311.5L161.3,306.5L162.8,276.4L160.1,265.1ZM180.2,478.8L183.8,469.2L186.4,468.6L199.3,482.8L196.6,484.9L198.8,487.2L196.0,491.6L188.6,493.5L185.0,489.4L185.0,480.7L180.2,478.8ZM126.0,307.9L133.3,306.5L134.3,290.6L149.3,285.6L151.6,288.4L147.9,293.3L147.0,306.0L157.3,314.8L167.9,316.6L167.6,318.0L172.7,322.9L171.7,328.3L157.4,339.9L158.0,343.2L155.0,343.1L150.1,338.5L151.2,329.5L147.7,323.7L126.0,307.9ZM97.9,274.4L103.2,271.4L106.2,256.8L113.6,250.2L123.8,250.0L136.8,258.4L149.3,255.1L154.0,260.8L146.0,273.6L135.1,279.5L127.6,275.7L117.0,278.0L110.4,285.8L97.9,274.4ZM106.0,338.2L120.3,339.3L118.0,346.8L122.8,353.0L111.6,346.7L106.0,338.2ZM104.1,302.0L110.1,295.4L112.6,301.4L117.2,303.7L104.1,302.0ZM77.1,325.8L85.5,325.8L94.0,319.6L101.1,331.4L99.5,337.5L92.6,336.3L89.9,330.7L82.5,331.1L77.1,325.8Z"><title>인천</title></path><path class="rg on" d="M292.4,237.8L301.0,234.8L306.1,223.1L302.9,219.8L298.1,221.8L297.8,217.9L301.8,216.7L297.0,212.1L302.3,198.9L295.3,195.4L297.4,176.0L304.3,174.8L310.9,165.7L318.0,170.7L325.6,170.0L332.2,161.7L345.0,162.3L350.9,155.3L361.4,174.7L368.4,172.1L369.6,163.2L373.4,159.1L384.8,168.4L391.7,169.4L393.3,154.6L411.3,162.1L426.2,148.0L433.4,146.2L438.3,154.0L444.7,156.2L442.4,165.1L434.3,169.3L433.0,175.3L422.9,185.1L421.7,193.9L416.3,195.9L418.6,199.8L415.0,205.1L414.8,223.8L409.6,234.7L410.6,237.7L400.9,237.6L399.9,244.2L396.1,245.9L400.5,256.8L397.8,258.2L397.1,264.3L411.4,266.5L408.3,286.3L399.2,288.3L395.2,298.7L384.6,299.7L376.4,294.2L358.3,300.7L351.7,293.6L341.1,311.3L320.5,311.0L305.5,319.5L298.7,313.2L301.4,296.3L293.9,269.0L297.6,241.3L292.4,237.8Z"><title>파주</title></path><path class="rg" d="M346.4,158.3L348.3,152.4L360.8,149.3L360.4,144.9L363.6,139.0L364.3,141.2L369.9,134.2L375.3,134.3L374.9,123.3L377.4,119.9L375.0,119.4L382.1,110.1L378.2,106.0L379.2,100.8L376.2,99.1L378.5,94.3L388.1,89.4L390.1,83.0L397.6,77.6L407.1,83.2L423.7,76.6L424.2,72.5L416.3,64.5L423.0,59.6L424.4,52.1L421.9,49.2L430.9,38.5L430.2,29.5L434.3,28.4L439.9,32.4L447.8,21.9L446.9,19.7L453.5,17.4L455.7,12.8L466.0,9.9L470.2,2.2L477.3,0.0L482.0,0.8L481.2,4.5L485.2,6.0L486.4,24.5L493.8,26.6L501.5,21.5L507.6,23.5L506.3,33.9L511.0,37.0L512.7,41.3L510.4,45.5L514.8,51.8L511.5,60.4L513.5,69.8L511.3,86.4L515.6,89.6L516.5,102.5L519.9,107.3L518.5,117.1L511.7,116.2L501.5,120.8L499.0,112.6L492.7,119.4L487.3,119.5L487.1,130.7L496.6,131.5L495.7,136.0L500.8,144.0L499.8,156.0L489.2,163.2L485.8,158.0L481.2,157.6L476.6,160.3L476.8,167.2L460.7,162.3L455.7,173.4L450.2,175.8L449.1,183.3L442.0,190.5L438.2,186.2L426.1,183.1L433.0,175.2L434.3,169.2L438.7,168.9L445.1,158.9L433.1,146.4L426.3,148.0L411.5,162.2L393.3,154.7L393.3,168.2L389.3,170.1L372.7,159.4L367.8,173.3L366.1,171.3L361.3,174.8L354.9,166.5L356.6,165.6L352.7,156.0L346.4,158.3ZM362.0,145.7L361.3,146.5L362.2,146.8L362.0,145.7Z"><title>연천</title></path><path class="rg" d="M408.3,549.7L407.6,536.2L412.1,531.0L409.3,527.0L421.7,527.3L425.6,511.5L430.6,514.3L441.7,507.5L445.6,500.8L452.2,504.7L454.8,517.3L462.5,520.3L463.8,530.4L471.5,532.2L476.2,529.6L476.0,535.7L468.7,539.1L465.7,544.2L470.2,549.1L474.1,544.8L472.8,556.2L467.7,557.6L461.8,564.8L454.1,561.6L447.2,569.2L437.2,568.7L432.8,564.2L425.0,566.4L416.4,552.4L408.3,549.7Z"><title>수원</title></path><path class="rg" d="M449.7,489.4L454.3,479.8L453.8,474.1L457.9,468.7L456.0,459.7L468.0,458.2L468.5,452.5L473.0,452.5L482.4,441.4L487.6,443.2L494.6,434.6L509.7,437.8L514.2,434.5L516.7,443.0L521.1,447.3L520.9,461.6L513.8,466.7L509.7,477.2L513.1,483.0L507.0,485.8L502.2,495.5L495.6,497.2L496.8,507.2L485.1,510.1L474.6,500.9L471.2,501.9L468.1,497.4L449.7,489.4Z"><title>성남</title></path><path class="rg" d="M438.6,280.2L445.3,276.3L463.6,279.9L483.0,270.1L491.6,274.2L491.9,279.1L497.5,278.9L500.8,285.3L492.9,287.5L490.7,301.1L485.7,303.9L484.4,308.7L464.9,316.1L460.0,321.0L458.6,316.8L451.7,317.7L449.9,313.1L444.5,312.6L438.6,280.2Z"><title>의정부</title></path><path class="rg" d="M385.4,472.5L382.9,468.0L390.4,468.7L394.8,454.0L399.1,456.6L407.3,447.8L412.1,455.5L423.1,453.2L421.9,463.5L426.5,466.3L430.5,477.6L423.0,490.1L423.4,495.2L417.3,493.0L413.8,486.6L403.3,487.1L395.2,497.0L391.1,488.0L387.2,486.9L385.4,472.5Z"><title>안양</title></path><path class="rg" d="M363.6,442.8L366.7,438.9L366.5,433.3L371.7,434.8L372.6,430.7L382.2,424.2L395.1,453.5L390.5,468.7L382.8,468.4L385.4,473.8L377.0,473.6L372.3,468.2L368.5,443.7L363.6,442.8Z"><title>광명</title></path><path class="rg" d="M351.5,682.9L374.3,680.2L388.2,654.0L397.1,650.6L412.3,657.4L424.6,650.7L436.4,652.5L433.8,643.0L438.0,643.9L435.4,628.4L438.5,621.2L453.1,616.6L456.9,622.0L461.7,618.2L468.4,622.4L474.8,621.9L475.4,617.7L480.7,613.3L490.4,612.3L489.4,620.3L484.3,623.4L491.8,646.2L482.6,649.2L481.7,653.3L491.3,655.3L493.5,658.8L483.0,671.1L486.4,675.3L490.1,671.2L503.1,675.1L499.6,683.0L503.7,691.3L495.9,693.8L493.9,697.6L498.1,701.0L486.0,704.7L479.2,711.8L481.8,715.5L478.7,721.1L474.6,718.3L469.5,723.1L465.9,721.3L451.0,728.8L444.6,724.9L435.8,724.9L399.3,743.0L397.5,735.5L375.6,739.5L370.8,737.3L364.5,718.9L373.4,718.5L362.6,698.6L366.6,691.1L361.1,686.4L351.6,686.0L351.5,682.9Z"><title>평택</title></path><path class="rg" d="M317.3,524.2L326.2,512.7L329.9,515.2L335.7,506.5L346.1,508.4L350.5,499.0L359.3,498.3L362.9,493.2L379.7,495.5L387.2,486.9L391.2,488.0L393.6,496.6L383.6,516.4L390.0,519.0L398.5,516.9L401.9,520.3L402.2,525.7L408.1,524.8L412.1,531.1L406.9,540.0L401.4,533.7L395.6,533.3L391.0,538.3L379.4,538.6L379.4,543.1L372.7,545.6L358.4,530.9L338.7,532.6L317.3,524.2ZM238.4,534.7L250.6,540.9L257.1,531.9L273.2,520.8L258.2,532.6L260.5,536.4L262.5,533.8L272.1,540.2L279.4,537.2L285.2,543.5L285.6,544.4L285.9,546.6L282.8,553.6L290.1,567.7L289.5,583.7L286.5,588.1L280.3,590.1L285.4,586.6L287.1,576.7L278.4,572.2L276.6,563.0L275.1,566.6L271.8,564.3L266.8,567.5L271.9,572.1L273.1,578.2L267.6,574.8L267.7,571.5L263.0,575.2L261.4,571.3L257.2,570.7L251.3,586.1L245.6,579.5L238.8,582.9L243.6,578.9L243.1,574.4L248.7,573.0L242.0,569.5L242.5,564.2L253.0,562.6L249.1,556.5L251.5,552.3L249.4,546.6L238.4,534.7ZM262.7,534.2L277.1,547.7L285.4,544.7L277.9,538.0L272.0,540.7L262.7,534.2ZM265.9,567.4L266.7,566.8L265.7,566.4L265.9,567.4ZM264.1,565.9L265.1,565.3L264.0,565.0L264.1,565.9ZM172.7,630.0L178.7,628.8L179.3,636.0L173.1,633.2L172.7,630.0Z"><title>안산</title></path><path class="rg" d="M421.2,460.8L422.6,449.9L439.5,438.4L444.1,445.3L452.7,440.3L453.1,453.6L459.2,458.5L456.0,459.8L455.8,466.4L444.0,467.4L437.8,472.3L432.9,470.5L430.3,474.5L421.2,460.8Z"><title>과천</title></path><path class="rg" d="M481.0,381.3L487.7,370.1L487.9,357.6L482.3,355.5L485.6,343.8L500.3,343.3L501.6,348.3L498.9,355.3L502.2,367.2L510.0,371.2L507.2,375.4L510.7,377.2L516.1,371.5L521.8,371.9L523.3,372.5L524.3,373.1L516.3,371.7L510.6,378.4L501.7,384.3L493.0,385.5L487.1,390.4L481.4,388.9L481.0,381.3Z"><title>구리</title></path><path class="rg" d="M472.1,313.6L484.3,308.8L491.6,298.6L492.8,287.5L498.5,287.6L500.6,283.2L508.7,287.9L514.3,279.6L525.7,279.2L527.7,276.0L534.0,284.5L539.1,279.1L548.8,276.3L551.4,270.0L554.8,273.5L567.8,273.8L578.0,281.2L584.4,297.7L589.7,300.8L591.0,316.1L596.5,317.2L594.6,319.8L598.7,326.6L600.6,325.6L596.2,342.6L587.6,353.5L581.5,377.5L570.4,399.2L568.9,413.1L562.2,418.0L558.1,407.4L541.1,397.7L524.3,373.1L516.1,371.5L510.6,377.3L506.7,375.0L510.0,371.2L501.6,365.7L498.9,355.3L501.6,348.3L500.2,343.4L478.3,343.2L478.9,319.6L474.3,318.5L472.1,313.6Z"><title>남양주</title></path><path class="rg" d="M435.7,595.8L439.8,593.1L441.3,586.2L449.4,582.0L465.4,582.9L468.4,599.6L478.5,604.8L481.9,612.7L475.9,617.0L477.4,620.4L474.8,621.9L468.3,622.5L461.7,618.3L457.1,622.2L451.6,614.3L449.2,602.0L435.7,595.8Z"><title>오산</title></path><path class="rg" d="M279.3,518.9L305.7,509.7L305.0,502.4L310.8,501.3L322.7,482.4L327.9,483.8L324.3,481.0L326.7,477.3L338.2,477.9L330.7,472.9L332.5,462.6L339.9,458.8L338.9,451.4L344.1,445.4L343.2,436.2L354.0,441.6L368.5,443.3L372.3,468.2L377.0,473.6L385.4,473.8L387.4,487.7L379.7,495.5L362.9,493.2L359.4,498.8L349.0,500.4L349.6,505.2L345.8,508.8L340.7,505.5L335.7,506.6L330.1,515.3L326.2,512.8L320.0,520.8L317.8,519.2L314.7,522.4L300.4,517.9L297.5,513.1L279.3,518.9ZM347.6,476.1L348.3,476.6L348.1,475.9L347.6,476.1ZM343.0,478.2L342.1,478.8L343.0,478.9L343.0,478.2Z"><title>시흥</title></path><path class="rg" d="M383.4,514.5L389.2,507.2L393.0,495.7L397.9,495.5L403.3,487.0L413.9,486.6L421.7,495.5L421.4,501.8L415.9,507.3L414.6,517.5L410.6,516.3L407.9,519.5L408.6,524.7L402.2,525.9L398.4,516.9L390.0,519.1L383.4,514.5Z"><title>군포</title></path><path class="rg" d="M407.7,520.0L415.1,516.1L415.8,506.9L421.4,501.8L422.9,490.1L431.8,471.2L437.8,472.3L443.6,467.3L457.9,467.4L441.7,507.6L430.6,514.3L425.5,511.7L421.7,527.3L409.3,527.0L407.7,520.0Z"><title>의왕</title></path><path class="rg" d="M497.6,416.4L507.6,396.8L515.9,395.8L513.4,377.8L509.9,378.1L516.3,371.7L524.3,373.1L537.1,388.7L539.4,395.8L558.0,407.4L559.9,413.2L546.8,417.6L548.5,425.8L542.5,428.9L542.3,433.6L513.7,428.7L514.3,435.3L509.5,437.8L499.2,435.0L506.7,421.1L497.6,416.4Z"><title>하남</title></path><path class="rg" d="M444.9,498.4L450.4,489.7L468.0,497.4L471.2,501.9L474.6,500.8L484.9,509.9L519.8,503.2L524.0,513.4L532.8,503.2L530.4,499.1L535.6,496.8L539.8,496.3L551.1,505.7L558.8,504.3L558.7,520.1L556.3,524.1L558.2,540.5L555.8,542.8L565.3,547.5L570.7,542.8L582.6,544.5L579.0,571.3L587.2,580.5L597.2,581.4L599.5,585.0L597.1,590.1L613.6,592.0L613.8,606.7L620.6,611.3L614.0,626.4L619.4,629.1L619.0,636.3L615.2,642.2L608.2,638.7L604.6,632.1L598.8,635.6L591.2,632.2L588.1,636.0L577.7,625.7L569.6,633.3L560.8,619.1L555.0,618.2L550.7,606.2L545.0,611.9L545.0,623.8L527.1,630.3L517.3,645.1L503.7,641.0L490.4,641.4L484.5,622.3L489.3,620.5L494.8,599.0L501.3,598.5L506.4,593.2L506.7,586.5L502.8,582.9L505.0,578.2L502.1,571.7L475.9,573.5L467.7,567.0L466.3,558.8L472.8,556.2L474.7,547.4L473.9,545.0L470.2,549.5L465.5,544.6L467.3,540.1L475.9,535.8L475.9,530.1L463.6,530.4L462.6,520.5L454.8,517.4L452.0,504.6L444.9,498.4Z"><title>용인</title></path><path class="rg" d="M578.8,570.6L582.5,544.5L586.7,541.1L583.3,534.7L590.4,531.2L589.2,527.8L593.6,524.1L593.1,520.0L610.8,513.9L626.8,497.2L629.6,500.3L638.8,495.4L647.0,505.7L657.3,507.6L662.8,512.7L663.5,519.9L671.0,522.6L671.1,527.9L663.7,542.6L667.3,554.3L662.3,561.2L664.7,582.5L658.9,591.7L663.3,597.0L676.6,592.8L681.7,598.3L684.6,595.2L682.9,589.3L692.2,587.9L700.9,602.1L707.1,601.1L705.8,608.3L710.2,614.1L708.7,636.8L694.2,643.2L696.3,653.0L684.7,649.6L679.1,657.5L680.9,664.4L675.7,667.9L659.0,658.7L655.2,663.5L649.6,664.0L645.9,660.8L653.5,657.5L658.3,646.1L658.0,634.9L653.6,631.9L650.8,623.6L633.6,620.0L626.7,610.3L615.0,608.2L613.0,591.3L609.3,593.3L596.8,590.1L599.4,585.0L597.2,581.5L587.2,580.5L578.8,570.6Z"><title>이천</title></path><path class="rg" d="M481.6,653.2L482.7,649.1L490.9,648.2L490.8,641.1L517.3,644.8L527.3,633.2L526.8,630.3L545.0,623.8L544.9,611.8L550.5,606.2L554.8,617.9L560.9,619.2L569.6,633.3L577.6,625.7L588.2,636.0L591.2,632.2L598.7,635.6L604.6,632.0L608.2,638.7L615.2,642.1L619.4,629.4L614.0,626.4L622.5,609.9L628.9,612.0L633.8,619.9L650.1,623.0L653.5,631.8L658.1,635.2L656.4,636.9L658.5,646.1L653.4,657.5L637.8,661.3L633.0,667.2L633.6,679.0L628.8,684.3L621.3,689.4L606.0,691.3L602.4,699.2L609.3,707.5L603.3,709.2L598.3,717.7L587.2,715.5L577.5,724.6L564.2,727.8L567.4,735.1L560.7,747.2L554.5,736.7L527.5,727.1L528.1,723.2L523.9,716.0L504.3,709.2L505.1,706.3L489.4,706.8L490.9,702.6L497.5,701.0L494.0,697.8L495.8,693.7L503.5,691.0L499.6,682.9L503.0,675.2L490.2,671.3L486.2,675.3L483.0,670.6L493.4,658.6L481.6,653.2Z"><title>안성</title></path><path class="rg" d="M494.6,502.3L495.6,497.2L502.1,495.5L507.0,485.8L513.1,483.0L509.7,477.2L513.6,466.8L520.8,461.5L521.1,447.2L512.8,433.5L513.8,427.9L518.3,431.5L524.1,429.5L542.3,433.5L542.2,429.0L548.5,425.9L546.6,417.6L559.0,413.2L561.3,417.7L566.2,416.8L569.8,406.4L577.3,401.8L588.7,402.0L595.6,407.7L603.0,422.5L600.3,426.3L603.9,434.0L602.3,442.3L595.2,444.4L596.8,450.5L601.2,451.8L601.8,456.1L608.8,463.2L608.2,467.1L613.5,471.2L617.4,481.9L626.8,481.6L628.6,485.3L628.3,495.8L615.7,510.0L604.8,518.0L593.2,520.0L593.7,524.0L589.3,527.8L590.5,531.3L583.3,534.8L586.9,541.1L582.5,544.5L570.7,542.8L565.3,547.5L555.7,542.8L558.0,540.4L556.3,524.2L558.8,519.8L558.5,504.2L551.0,505.7L539.6,496.6L535.7,496.9L530.5,499.0L532.8,503.6L524.1,513.4L519.8,503.3L498.6,508.9L494.6,502.3Z"><title>광주</title></path><path class="rg" d="M607.9,466.3L611.8,458.6L618.4,453.6L639.9,462.8L654.3,453.0L662.6,457.5L667.0,468.4L669.9,469.5L675.4,465.8L679.4,468.6L687.7,467.3L690.3,462.8L702.7,469.6L709.2,467.6L713.7,472.3L719.0,465.7L729.5,467.1L731.6,468.5L730.3,475.6L740.2,469.3L743.2,474.8L738.4,479.6L737.6,489.2L743.7,490.9L749.5,487.6L762.2,492.6L762.1,512.1L765.9,525.0L758.1,530.4L762.7,545.3L756.8,560.9L757.7,572.6L752.4,577.1L748.1,591.8L744.3,591.2L741.3,595.3L738.6,605.2L734.7,608.8L734.8,614.5L724.1,616.8L714.5,609.0L706.8,607.1L707.1,601.2L700.9,602.2L692.1,588.0L682.9,589.3L684.6,595.2L681.7,598.3L676.7,592.9L671.5,596.8L662.8,596.7L658.8,590.9L664.6,582.4L662.3,561.0L667.3,554.5L663.7,542.5L671.1,527.9L671.0,522.6L663.5,520.0L662.7,512.7L657.3,507.6L647.0,505.6L638.9,495.5L629.4,500.3L626.8,497.2L627.7,482.5L617.3,481.9L613.5,471.2L607.9,466.3Z"><title>여주</title></path><path class="rg" d="M551.4,270.0L556.8,256.9L554.9,243.1L560.0,233.6L557.6,229.6L562.5,218.9L564.3,222.4L571.0,224.0L575.8,221.0L578.9,192.0L589.7,194.3L602.0,182.4L598.7,172.5L602.2,161.4L614.1,153.0L620.1,138.0L619.2,133.9L628.4,124.3L631.3,126.5L630.9,133.3L635.5,145.5L653.0,152.9L668.4,151.6L671.8,163.5L670.4,168.9L694.2,175.5L699.5,183.9L701.5,201.1L696.6,218.4L684.5,219.8L678.4,229.5L663.0,239.9L661.8,246.1L667.3,253.9L660.3,263.6L670.5,281.0L654.3,296.9L656.3,304.9L661.9,299.1L668.6,302.9L674.2,297.8L677.8,298.2L673.0,320.4L673.9,334.1L666.5,341.8L681.5,359.8L678.1,364.9L677.0,376.1L660.7,374.5L650.1,382.7L639.8,379.2L639.2,356.1L633.8,351.6L632.2,345.1L626.0,343.4L623.8,338.3L625.7,333.8L620.6,329.5L608.3,339.7L596.5,341.5L600.4,325.8L594.6,319.8L596.5,317.3L591.0,316.3L588.8,311.0L589.5,300.7L584.3,297.6L578.0,281.3L567.7,273.8L554.7,273.6L551.4,270.0Z"><title>가평</title></path><path class="rg" d="M568.6,409.9L570.4,399.2L581.5,377.5L588.7,351.6L596.5,341.5L608.3,339.6L620.5,329.5L626.4,335.1L623.8,338.2L626.2,343.3L632.2,345.1L633.8,351.6L638.8,354.9L640.0,379.3L650.1,382.6L660.7,374.5L677.0,375.9L678.1,364.9L681.5,360.5L677.1,351.1L686.7,348.6L687.6,344.5L695.0,339.4L714.2,349.6L716.0,354.7L721.0,354.1L740.0,374.4L759.9,371.4L772.8,378.9L777.3,375.3L785.7,386.5L800.0,392.9L797.4,400.0L783.9,400.7L772.5,414.4L762.3,419.4L762.5,425.0L768.6,425.4L774.9,434.4L779.4,435.8L778.0,442.5L781.1,459.1L776.8,462.7L772.7,480.8L769.5,483.8L770.3,490.0L762.2,492.6L749.6,487.7L743.8,490.9L737.5,489.1L738.4,479.7L742.8,472.3L740.1,469.3L729.9,475.8L731.6,468.7L729.6,467.1L719.0,465.9L713.7,472.3L709.1,467.6L702.6,469.7L690.1,462.8L687.4,467.3L679.2,468.7L675.4,465.8L669.9,469.5L667.0,468.5L662.6,457.5L654.4,453.1L639.9,462.8L618.4,453.6L608.3,463.1L601.1,451.7L596.8,450.6L594.8,444.4L601.5,443.2L603.9,434.2L600.3,426.8L602.8,422.2L593.3,404.5L577.2,401.8L568.6,409.9Z"><title>양평</title></path><path class="rg on" d="M327.9,428.0L329.5,412.8L335.5,412.3L337.8,392.0L349.0,397.4L350.2,401.5L354.4,397.7L362.0,399.1L364.6,406.6L363.0,416.5L358.2,422.8L362.5,427.6L358.8,434.5L366.5,433.3L366.6,439.4L362.4,443.4L347.9,439.5L345.6,436.0L338.7,436.1L327.9,428.0Z"><title>부천</title></path><path class="rg" d="M440.5,197.5L443.6,195.2L442.0,190.5L449.6,182.0L450.2,175.7L455.6,173.5L457.1,166.5L461.4,162.4L476.8,167.2L480.3,177.2L479.0,182.0L484.2,184.4L489.7,196.7L500.0,199.2L504.2,208.1L500.6,218.5L492.6,219.7L484.4,227.0L475.3,220.6L463.7,222.2L457.4,208.7L443.2,204.0L440.5,197.5Z"><title>동두천</title></path><path class="rg on" d="M298.5,313.2L305.6,319.4L320.7,310.8L341.1,311.1L351.8,293.4L358.4,300.7L376.4,294.2L390.6,300.6L396.2,298.0L395.6,293.4L399.2,288.1L407.6,287.3L408.3,293.9L404.4,297.1L406.0,308.7L398.7,329.4L412.6,329.0L414.5,321.0L422.1,317.1L434.6,324.3L435.4,331.1L429.3,337.1L432.0,345.4L427.4,350.1L420.7,351.2L419.7,339.2L415.4,335.6L400.5,342.9L395.3,361.1L395.1,372.6L389.7,373.3L388.9,370.6L385.5,379.0L375.4,381.3L323.3,341.3L300.4,328.7L297.2,322.2L298.5,313.2ZM398.4,342.2L400.4,342.5L398.3,341.4L398.4,342.2Z"><title>고양</title></path><path class="rg" d="M396.0,246.2L399.9,244.0L400.9,237.6L410.7,237.5L409.6,234.7L414.8,223.8L414.8,205.2L418.5,199.6L416.3,195.8L421.1,194.7L422.8,185.0L426.1,183.1L438.5,186.3L443.7,194.5L440.6,197.5L442.5,203.0L457.5,208.6L463.7,222.2L475.3,220.6L483.9,226.2L489.9,244.3L490.0,253.0L488.1,261.7L481.9,271.2L463.6,279.9L445.3,276.3L438.8,279.7L440.7,287.7L438.9,291.4L445.7,310.6L442.0,315.3L441.6,321.7L434.0,324.2L418.6,317.1L414.6,321.0L413.5,328.4L400.0,330.2L398.0,327.9L400.7,326.1L405.9,308.7L404.4,297.1L408.5,293.2L407.1,282.7L411.3,266.8L396.7,264.5L400.1,256.2L396.0,246.2Z"><title>양주</title></path><path class="rg" d="M476.4,161.4L485.5,157.9L489.5,163.0L500.6,153.9L496.5,131.6L486.8,130.5L487.3,119.4L492.6,119.5L499.1,112.6L501.4,120.8L518.7,116.6L519.9,107.1L516.5,102.6L515.9,90.4L511.2,86.2L513.4,69.9L511.5,60.4L515.0,51.7L518.7,51.5L518.6,64.9L532.5,77.6L533.8,72.3L538.0,72.7L540.1,67.7L547.1,64.1L551.8,54.7L559.1,53.6L565.0,57.0L559.2,66.0L555.8,84.4L560.2,90.0L570.2,88.4L574.9,100.9L582.0,103.3L582.7,97.7L594.1,94.3L599.5,88.1L610.2,91.1L611.1,96.3L614.4,97.0L621.7,89.8L628.0,99.4L628.4,124.3L619.3,133.9L620.1,138.0L614.2,153.1L602.3,161.3L598.7,172.5L602.1,182.4L589.5,194.3L578.9,192.0L576.1,220.4L571.4,224.1L562.4,219.7L557.6,229.7L560.2,233.7L555.0,243.2L557.2,250.7L554.5,264.9L548.9,276.6L539.2,279.2L535.4,284.0L528.8,280.2L527.7,276.0L525.5,279.3L514.4,279.5L511.7,286.4L507.8,288.1L497.6,279.0L491.6,279.1L491.6,274.2L483.0,270.1L489.9,252.9L489.9,244.2L484.4,227.0L492.7,219.7L500.5,218.5L504.0,208.4L500.0,199.3L489.8,196.8L484.2,184.4L478.6,181.9L480.2,177.2L477.3,174.1L476.4,161.4Z"><title>포천</title></path><path class="rg" d="M281.1,535.6L286.4,540.2L291.7,537.8L293.2,533.2L281.4,534.4L288.5,532.4L293.4,532.6L293.7,535.8L299.0,535.0L303.1,538.8L298.2,543.7L299.1,546.5L308.7,539.1L322.3,542.7L319.1,534.4L323.3,532.6L332.2,536.0L333.5,539.7L333.6,535.7L337.5,536.1L340.6,541.3L341.2,534.7L356.4,532.1L367.7,541.2L372.3,550.3L379.5,543.3L379.5,538.6L390.8,538.2L395.5,533.3L401.3,533.6L407.0,540.4L408.3,549.5L416.6,552.5L425.6,566.8L432.6,564.0L437.2,568.4L439.3,566.2L447.3,569.1L453.9,561.7L461.1,565.0L466.0,560.8L467.6,566.9L475.8,573.5L502.2,571.7L506.5,593.3L501.4,598.7L494.8,599.1L492.4,611.8L482.4,613.8L478.4,604.7L468.3,599.5L465.4,583.0L449.8,582.3L441.4,586.1L439.8,593.1L435.8,595.7L448.4,601.1L453.1,616.7L437.9,621.9L435.7,629.0L438.0,630.6L435.9,631.4L438.0,643.9L433.8,643.2L436.6,652.3L424.8,650.7L412.4,657.4L397.0,650.7L388.3,654.3L374.3,680.2L351.5,682.9L348.1,674.1L330.9,673.8L329.4,667.2L333.7,660.0L301.7,628.3L302.6,622.4L298.5,616.0L307.4,608.1L306.0,605.5L288.4,606.9L293.1,602.7L290.0,592.5L292.8,595.0L296.5,588.2L288.3,591.2L293.1,571.0L287.5,558.8L286.9,551.2L290.0,544.9L281.1,535.6ZM303.8,629.1L324.1,649.8L320.6,626.4L322.4,622.8L330.2,615.5L353.8,609.5L325.8,614.9L332.7,607.7L343.1,605.2L348.9,596.5L342.9,601.2L330.2,600.0L320.3,618.8L303.8,629.1ZM274.0,597.1L276.6,593.4L280.7,596.1L275.2,604.7L274.0,597.1Z"><title>화성</title></path><path class="rg on" d="M232.1,279.1L235.7,275.4L241.6,275.4L242.2,268.9L256.6,279.6L264.4,280.4L278.0,270.8L294.0,269.9L301.4,296.3L297.1,321.3L299.4,327.5L323.2,341.2L353.6,364.5L351.3,368.4L352.8,373.7L349.8,377.1L338.6,373.6L331.9,378.2L328.6,371.3L320.7,371.5L316.3,365.2L311.6,365.6L312.1,361.0L307.5,356.3L289.6,346.1L287.2,352.4L283.1,352.5L278.1,365.7L273.1,363.8L256.3,373.4L248.5,364.1L246.0,352.1L237.8,337.5L242.7,333.0L235.9,327.5L238.7,316.7L233.4,305.6L237.4,287.0L232.1,279.1Z"><title>김포</title></path>
+<text class="lb" x="412.0" y="385.9">서울</text><text class="lb on" x="313.0" y="445.6">인천</text><text class="lb on" x="357.8" y="229.3">파주</text><text class="lb" x="446.8" y="96.7">연천</text><text class="lb" x="442.8" y="534.0">수원</text><text class="lb" x="483.9" y="471.4">성남</text><text class="lb" x="466.5" y="294.3">의정부</text><text class="lb" x="406.2" y="470.6">안양</text><text class="lb" x="438.8" y="677.7">평택</text><text class="lb" x="353.8" y="515.8">안산</text><text class="lb" x="547.3" y="345.8">남양주</text><text class="lb" x="355.6" y="479.9">시흥</text><text class="lb" x="434.3" y="496.0">의왕</text><text class="lb" x="527.2" y="402.1">하남</text><text class="lb" x="524.8" y="569.2">용인</text><text class="lb" x="631.1" y="582.0">이천</text><text class="lb" x="567.8" y="677.2">안성</text><text class="lb" x="562.7" y="474.2">광주</text><text class="lb" x="713.4" y="536.5">여주</text><text class="lb" x="610.2" y="250.0">가평</text><text class="lb" x="685.9" y="412.2">양평</text><text class="lb on" x="344.7" y="419.7">부천</text><text class="lb" x="465.4" y="192.9">동두천</text><text class="lb on" x="371.0" y="339.3">고양</text><text class="lb" x="443.9" y="258.9">양주</text><text class="lb" x="538.5" y="167.8">포천</text><text class="lb" x="392.3" y="607.3">화성</text><text class="lb on" x="263.5" y="350.4">김포</text>
+<g class="fac" transform="translate(263.7,317.1)"><circle r="16" class="pulse"/><circle r="7"/><text x="12" y="-12">공장</text></g>
+</svg></div>
+        <div class="area-side">
+          <h3>주요 서비스 지역</h3>
+          <ul class="area-list">
+            <li><span class="dot"></span><strong>인천</strong><small>인천광역시 전역</small></li>
+            <li><span class="dot"></span><strong>부천</strong></li>
+            <li><span class="dot"></span><strong>김포</strong><small>공장 소재지</small></li>
+            <li><span class="dot"></span><strong>고양</strong><small>일산 포함</small></li>
+            <li><span class="dot"></span><strong>파주</strong></li>
+          </ul>
+          <p class="muted">김포 공장에서 수거·납품 전용 차량이 직접 다닙니다. 표시되지 않은 수도권 지역도 병원 위치와 물량에 따라 협의할 수 있습니다.</p>
+          <a class="btn" href="#apply">우리 병원 지역 문의하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="quality" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 서비스안내 › 품질관리</div><h1>품질관리</h1></div></div>
+    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질관리</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Quality Control</div><h2>공정마다 정한 품질 기준</h2></div>
+        <p>세탁 품질을 작업자의 감에 맡기지 않습니다. 품목별 자동 프로그램과 거래처 태그로 같은 결과를 매번 만듭니다.</p>
+      </div>
+      <div class="qgrid">
+        <div class="card"><div class="eyebrow">세탁</div><h3>품목별 자동 세탁 프로그램</h3><ul><li>품목에 맞춘 공정·시간·온도·세제 적용</li><li>세탁 품질 유지와 린넨 수명 연장</li></ul></div>
+        <div class="card"><div class="eyebrow">건조</div><h3>품목별 자동 건조 프로그램</h3><ul><li>온도·습도·냉각시간 관리로 냄새·황변·구김 방지</li><li>스팀 건조로 섬유 손상 최소화</li></ul></div>
+        <div class="card"><div class="eyebrow">다림질</div><h3>자동과 수동을 나눠 마감</h3><ul><li>시트류는 아이로너(1,200Ø×4Roll) 자동 다림질</li><li>의사가운 등은 품목별 수동 다림질</li></ul></div>
+      </div>
+
+      <h3 class="sub">혼입·분실 방지 태그 관리</h3>
+      <div class="tags">
+        <figure><img src="img/tag-cart.jpg" alt="거래처별 전용 카트"><figcaption>거래처별 카트 분리 보관</figcaption></figure>
+        <figure><img src="img/tag-before.jpg" alt="거래처 태그와 세탁 전 태그"><figcaption>거래처 태그 + ‘세탁 전’</figcaption></figure>
+        <figure><img src="img/tag-during.jpg" alt="거래처 태그와 세탁 중 태그"><figcaption>거래처 태그 + ‘세탁 중’</figcaption></figure>
+        <figure><img src="img/tag-rewash.jpg" alt="재세탁 카트"><figcaption>검수 불합격품은 ‘재세탁’ 카트로 분리</figcaption></figure>
+      </div>
+
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="cleanzone" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 시설현황 › 감염관리 클린존</div><h1>감염관리 클린존</h1></div></div>
+    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#cleanzone" data-tab="cleanzone">감염관리 클린존</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Clean Zone</div><h2>오염구역과 청결구역을 완전히 나눴습니다</h2></div>
+        <p>세탁 전 오염방지부터 교차오염 예방, 작업장 위생까지 감염관리 기준에 맞춰 설계한 작업 환경입니다.</p>
+      </div>
+      <div class="inout" style="margin-top:0;margin-bottom:28px">
+        <img src="img/in-out.jpg" alt="투입(IN)과 배출(OUT) 구역이 벽으로 나뉜 세탁기" width="450" height="238">
+        <p class="muted">세탁기의 투입구(IN)는 오염구역에, 배출구(OUT)는 청결구역에 있습니다. 세탁을 마친 세탁물이 오염구역을 다시 지나지 않아 재오염을 막습니다.</p>
+      </div>
+      <h3 class="sub">위생관리</h3>
+      <div class="qgrid">
+        <div class="card"><h3>세탁 전 오염방지</h3><ul><li>오염 세탁물은 밀폐 수거백·수거 전용 카트로 운반</li><li>분류·투입 작업은 오염구역에서만 실시</li><li>가운·마스크·장갑·안면보호구 착용</li></ul></div>
+        <div class="card"><h3>교차오염 예방</h3><ul><li>투입·배출 구역이 벽으로 분리된 세탁기로 오염·청결구역 완전 분리</li><li>오염 세탁물 전용 세탁기 2대, 작업 동선 분리</li><li>수거용·납품용 차량과 카트 구분 운영</li></ul></div>
+        <div class="card"><h3>작업장 위생 · 위생교육</h3><ul><li>구역별 청소·소독과 점검일지 기록</li><li>손위생, 보호구 사용법, 세탁물 취급, 소독약품, 장비 위생 정기 교육</li></ul></div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="equipment" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 시설현황 › 보유장비&amp;설비</div><h1>보유장비&amp;설비</h1></div></div>
+    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#cleanzone" data-tab="cleanzone">감염관리 클린존</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Capacity</div><h2>처리 능력과 보유 설비</h2></div>
+        <p>현재 처리량보다 여유 있는 설비를 갖추고 있어 물량이 늘어도 납기를 지킬 수 있습니다. 필요하면 연장 가동으로 처리능력을 더 늘립니다.</p>
+      </div>
+      <div class="cap">
+        <div class="big">
+          <div><strong>6,400kg</strong><span>1일 세탁 처리능력</span><p>단독 세탁기 7대, 8시간 가동 기준</p></div>
+          <div><strong>4,000kg</strong><span>1일 멸균 처리능력</span><p>1000L 멸균기, 1회 500kg / 60분</p></div>
+        </div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>장비</th><th>용량</th><th>수량</th><th>1회 처리</th><th>1일(8시간)</th></tr></thead>
+            <tbody>
+              <tr><td>In-Out 분리형 단독세탁기</td><td class="n">110kg</td><td class="n">1</td><td class="n">110kg / 50분</td><td class="n">1,050kg</td></tr>
+              <tr><td>In-Out 분리형 단독세탁기</td><td class="n">100kg</td><td class="n">5</td><td class="n">100kg / 50분</td><td class="n">4,800kg</td></tr>
+              <tr><td>단독세탁기</td><td class="n">60kg</td><td class="n">1</td><td class="n">60kg / 50분</td><td class="n">550kg</td></tr>
+              <tr class="sum"><td>세탁 합계</td><td></td><td class="n">7</td><td></td><td class="n">6,400kg</td></tr>
+              <tr><td>멸균기</td><td class="n">1000L · 80kW</td><td class="n">1</td><td class="n">500kg / 60분</td><td class="n">4,000kg</td></tr>
+              <tr><td>스팀건조기</td><td class="n">100kg</td><td class="n">4</td><td></td><td></td></tr>
+              <tr><td>아이로너</td><td class="n">1,200Ø × 4Roll</td><td class="n">1</td><td></td><td></td></tr>
+              <tr><td>폴더기</td><td class="n">3,200mm</td><td class="n">1</td><td></td><td></td></tr>
+              <tr><td>보일러</td><td class="n">800kg · 500kg</td><td class="n">2</td><td></td><td></td></tr>
+              <tr><td>벤딩포장기 · 자동 재봉틀 · 콤프레샤(20마력)</td><td></td><td class="n">3 · 1 · 1</td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="facility">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Facility</div><h2>사업장 전경</h2></div>
+        <p>경기도 김포 공장에서 세탁, 건조, 다림질, 수선, 멸균까지 모두 처리합니다.</p>
+      </div>
+      <div class="gallery">
+        <figure class="wide"><img src="img/washers-1.jpg" alt="세탁 및 건조 구역"><figcaption>세탁 및 건조</figcaption></figure>
+        <figure><img src="img/ironer.jpg" alt="아이로너"><figcaption>다림질 (아이로너)</figcaption></figure>
+        <figure><img src="img/sterilizer.jpg" alt="멸균기"><figcaption>멸균</figcaption></figure>
+        <figure><img src="img/ironing.jpg" alt="다림질 작업"><figcaption>다림질</figcaption></figure>
+        <figure><img src="img/repair.jpg" alt="수선 작업"><figcaption>수선</figcaption></figure>
+        <figure class="wide"><img src="img/exterior-2.jpg" alt="공장 외부 전경"><figcaption>외부 전경</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="notice" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 고객센터 › 공지사항</div><h1>공지사항</h1></div></div>
+    <nav class="tabs" aria-label="고객센터 하위 메뉴"><div class="wrap"><a href="#notice" data-tab="notice">공지사항</a><a href="#faq" data-tab="faq">FAQ</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">News &amp; Notice</div><h2>공지사항</h2></div>
+        <p>스테리케어의 소식과 공지를 알려드립니다.</p>
+      </div>
+      <div class="board">
+        <div class="board-head"><span>번호</span><span>제목</span><span>등록일</span></div>
+        <p class="empty">아직 등록된 글이 없습니다. 사이트를 열면 이곳에 소식을 올릴 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="faq" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 고객센터 › FAQ</div><h1>FAQ</h1></div></div>
+    <nav class="tabs" aria-label="고객센터 하위 메뉴"><div class="wrap"><a href="#notice" data-tab="notice">공지사항</a><a href="#faq" data-tab="faq">FAQ</a></div></nav>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">FAQ</div><h2>자주 묻는 질문</h2></div>
+        <p>궁금한 점이 더 있으시면 대표번호 032-614-6592로 문의해 주세요.</p>
+      </div>
+      <div class="faq">
+        <details open><summary>어떤 세탁물을 맡길 수 있나요?</summary><p>시트류, 환자복, 의사가운, 수술가운 등 의료기관 세탁물을 처리합니다. 멸균이 필요한 품목은 고압증기 멸균까지 마쳐 납품합니다.</p></details>
+        <details><summary>수거와 납품은 얼마나 자주 하나요?</summary><p>기본은 주 5회이며, 물량에 따라 증편할 수 있습니다. 수거·납품 시간은 08:00~24:00 사이에서 병원과 협의해 정합니다.</p></details>
+        <details><summary>맡긴 세탁물은 언제 돌려받나요?</summary><p>수거 후 1일 이내 납품을 원칙으로 합니다. 긴급 세탁물은 별도로 우선 처리합니다.</p></details>
+        <details><summary>급하게 세탁이 필요할 때는 어떻게 하나요?</summary><p>병원 전담 담당자에게 바로 연락하시면 정기 수거와 별도로 차량을 보내 수거하고, 당일 처리를 원칙으로 납품합니다.</p></details>
+        <details><summary>다른 병원 세탁물과 섞이지 않나요?</summary><p>병원별 전용 카트에 나눠 보관하고, 거래처 색상 태그와 공정 상태 태그를 붙여 관리합니다. 세탁도 병원별·품목별로 단독 세탁기에서 따로 합니다.</p></details>
+        <details><summary>세탁물이 분실되거나 훼손되면요?</summary><p>사실 확인과 원인 조사 후 분실품은 병원과 협의해 동등품으로 변상하고, 당사 귀책 훼손은 수선 또는 변상합니다. 결과는 서면으로 알려드립니다.</p></details>
+        <details><summary>서비스 지역이 아닌데 이용할 수 있나요?</summary><p>표시되지 않은 수도권 지역도 병원 위치와 물량에 따라 협의할 수 있습니다. 서비스 신청하기에서 문의해 주세요.</p></details>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="apply" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › Contact › 서비스 신청하기</div><h1>서비스 신청하기</h1></div></div>
+    
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Contact</div><h2>세탁 위탁 문의</h2></div>
+        <p>병상 수와 세탁 품목, 하루 세탁량을 알려주시면 수거 일정과 견적을 안내해 드립니다.</p>
+      </div>
+      <div class="contact">
+        <dl class="kv">
+          <div><dt>대표번호</dt><dd>032-614-6592</dd></div>
+          <div><dt>팩스</dt><dd>032-612-6595</dd></div>
+          <div><dt>이메일</dt><dd>regen75@stericare.co.kr<span class="ph">확인 필요</span></dd></div>
+          <div><dt>본사</dt><dd>경기도 부천시 부천로29번길 17, 3층</dd></div>
+          <div><dt>공장</dt><dd>경기도 김포시 통진읍 귀전로154번길 93</dd></div>
+          <div><dt>상담 시간</dt><dd>평일 09:00 – 18:00<span class="ph">확인 필요</span></dd></div>
+        </dl>
+        <form id="inq" novalidate>
+          <div class="two">
+            <label for="f-org">기관명<input id="f-org" name="org" placeholder="예: OO병원"></label>
+            <label for="f-name">담당자<input id="f-name" name="name" placeholder="이름"></label>
+          </div>
+          <div class="two">
+            <label for="f-tel">연락처<input id="f-tel" name="tel" placeholder="010-0000-0000"></label>
+            <label for="f-type">문의 유형<select id="f-type" name="type"><option>세탁 위탁</option><option>세탁·멸균 위탁</option><option>견적 요청</option><option>기타</option></select></label>
+          </div>
+          <label for="f-msg">문의 내용<textarea id="f-msg" name="msg" placeholder="병상 수, 세탁 품목, 하루 예상 세탁량 등을 적어주세요"></textarea></label>
+          <label class="agree" for="f-agree"><input type="checkbox" id="f-agree" name="agree"> 문의 답변을 위한 개인정보(기관명, 담당자, 연락처) 수집·이용에 동의합니다. 수집한 정보는 상담 완료 후 1년간 보관 후 파기합니다.</label>
+          <button class="btn" type="submit" id="f-submit" style="justify-self:start">문의 남기기</button>
+          <p class="formmsg" id="formmsg" role="status" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="system" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> › 세탁관리시스템 › 세탁관리시스템</div><h1>세탁관리시스템</h1></div></div>
+    
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Laundry Management System</div><h2>세탁관리시스템</h2></div>
+        <p>병원 담당자가 세탁물 수량과 이력을 확인하는 시스템입니다.</p>
+      </div>
+      <div class="card" style="max-width:640px"><h3>접속 주소 준비 중</h3><ul><li>세탁물 수량과 처리 현황을 확인할 수 있도록 연결할 예정입니다.</li><li>거래 병원은 담당자를 통해 계정을 안내받을 수 있습니다.</li></ul></div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo.png" alt="스테리케어" width="130" height="28">
+    <div class="meta">
+      <span>상호 (주)비앤에스파트너</span>
+      <span>대표 박선영</span>
+      <span>사업자등록번호 220-81-60407</span>
+      <span>본사 경기도 부천시 부천로29번길 17, 3층</span>
+      <span>공장 경기도 김포시 통진읍 귀전로154번길 93</span>
+      <span>T. 032-614-6592</span>
+    </div>
+    <span>© 2026 STERICARE. ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var views=[].slice.call(document.querySelectorAll('.view'));
+  var ids=views.map(function(v){return v.dataset.view});
+  var groups={};[].slice.call(document.querySelectorAll('.gnb>ul>li')).forEach(function(li){
+    [].slice.call(li.querySelectorAll('a')).forEach(function(a){groups[a.getAttribute('href').slice(1)]=li.querySelector('.top');});});
+  var mnav=document.getElementById('mnav'),burger=document.getElementById('burger');
+  function show(){
+    var h=(location.hash||'').slice(1); if(ids.indexOf(h)<0) h='home';
+    views.forEach(function(v){v.hidden=v.dataset.view!==h});
+    document.querySelectorAll('.gnb .top').forEach(function(t){t.classList.toggle('on',groups[h]===t)});
+    document.querySelectorAll('[data-tab]').forEach(function(t){t.classList.toggle('on',t.dataset.tab===h)});
+    mnav.hidden=true;burger.setAttribute('aria-expanded','false');
+    window.scrollTo(0,0);
+  }
+  burger.addEventListener('click',function(){mnav.hidden=!mnav.hidden;burger.setAttribute('aria-expanded',String(!mnav.hidden));});
+  window.addEventListener('hashchange',show);show();
+  /* 문의 양식 → Supabase inquiries 테이블. 아래 두 값을 Supabase 프로젝트 설정 > API 에서 복사해 넣으세요 */
+  var SUPABASE_URL='';      // 예: https://abcd1234.supabase.co
+  var SUPABASE_ANON_KEY=''; // anon public 키 (공개해도 되는 키)
+  var f=document.getElementById('inq'),msg=document.getElementById('formmsg'),btn=document.getElementById('f-submit');
+  function say(t){msg.textContent=t;msg.hidden=false;}
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return document.getElementById(id).value.trim();};
+    if(!v('f-name')||!v('f-tel')){say('담당자와 연락처를 입력해 주세요.');return;}
+    if(!document.getElementById('f-agree').checked){say('개인정보 수집·이용에 동의해 주세요.');return;}
+    if(!SUPABASE_URL||!SUPABASE_ANON_KEY){say('문의 접수 준비 중입니다. 대표번호 032-614-6592로 연락해 주세요.');return;}
+    btn.disabled=true;say('보내는 중입니다…');
+    fetch(SUPABASE_URL+'/rest/v1/inquiries',{method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({org:v('f-org'),name:v('f-name'),tel:v('f-tel'),type:v('f-type'),message:v('f-msg')})})
+    .then(function(r){if(!r.ok)throw new Error(r.status);f.reset();say('문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.');})
+    .catch(function(){say('접수에 실패했습니다. 잠시 후 다시 시도하시거나 032-614-6592로 연락해 주세요.');})
+    .finally(function(){btn.disabled=false;});
+  });
+})();
+</script>
+
+</body>
+</html>
