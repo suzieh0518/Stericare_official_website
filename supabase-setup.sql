@@ -4,7 +4,7 @@
 create table if not exists public.inquiries (
   id          bigint generated always as identity primary key,
   created_at  timestamptz not null default now(),
-  org         text,
+  org         text check (char_length(org) <= 100),
   name        text not null check (char_length(name) <= 50),
   tel         text not null check (char_length(tel) <= 30),
   type        text check (char_length(type) <= 30),
@@ -13,6 +13,10 @@ create table if not exists public.inquiries (
 
 -- 보안: 홈페이지 방문자는 "문의 넣기"만 가능하고, 남의 문의를 읽거나 지울 수 없게 합니다.
 alter table public.inquiries enable row level security;
+
+-- 방문자(anon)에게 '넣기' 권한만 줍니다.
+revoke all on public.inquiries from anon;
+grant insert on public.inquiries to anon;
 
 create policy "website visitors can submit inquiries"
   on public.inquiries for insert
