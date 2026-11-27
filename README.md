@@ -6,4 +6,5 @@ stericare.co.kr — 감염관리형 의료세탁 & 멸균 서비스
 - `img/` : 사진과 로고
 - `fonts/` : 나눔스퀘어 웹폰트
 - `supabase-setup.sql` : 문의 양식용 Supabase 테이블 생성 SQL
-- 호스팅: Netlify (이 저장소의 main 브랜치가 바뀌면 자동 배포)
+- 호스팅: GitHub Pages (main 브랜치가 바뀌면 자동 배포, 도메인은 CNAME 파일)
+- 문의: Supabase inquiries 테이블 저장 + Web3Forms 메일 알림
