@@ -18,6 +18,7 @@ alter table public.inquiries enable row level security;
 revoke all on public.inquiries from anon;
 grant insert on public.inquiries to anon;
 
+drop policy if exists "website visitors can submit inquiries" on public.inquiries;
 create policy "website visitors can submit inquiries"
   on public.inquiries for insert
   to anon
