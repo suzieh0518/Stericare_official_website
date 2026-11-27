@@ -248,6 +248,7 @@ section + section{border-top:1px solid var(--line)}
 .inout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:20px}
 .inout > *{min-width:0}
 .inout img{border-radius:4px;width:100%}
+.loc-photo{margin-top:40px}.loc-photo img{border-radius:4px;width:100%;max-height:420px;object-fit:cover}.loc-photo figcaption{color:var(--muted);font-size:14px;margin-top:8px}
 .inout-img{display:block;border-radius:4px;width:100%;max-width:560px;height:auto;margin:-16px 0 36px}
 @media (max-width:860px){.qgrid{grid-template-columns:1fr}.tags{grid-template-columns:1fr 1fr}.inout{grid-template-columns:1fr}}
 
@@ -334,10 +335,10 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
 <header>
   <div class="wrap nav">
     <a class="logo" href="#home" aria-label="스테리케어 홈"><img src="img/logo.png" alt="스테리케어" width="150" height="32"></a>
-    <nav class="gnb" aria-label="주 메뉴"><ul><li><a class="top" href="#about">스테리케어 소개</a><ul class="sub"><li><a href="#about">회사소개</a></li><li><a href="#why">선택 이유</a></li><li><a href="#history">연혁</a></li><li><a href="#location">오시는 길</a></li></ul></li><li><a class="top" href="#area">서비스안내</a><ul class="sub"><li><a href="#area">서비스 지역안내</a></li><li><a href="#quality">품질관리</a></li></ul></li><li><a class="top" href="#cleanzone">시설현황</a><ul class="sub"><li><a href="#cleanzone">감염관리 클린존</a></li><li><a href="#equipment">보유장비&amp;설비</a></li></ul></li><li><a class="top" href="#notice">고객센터</a><ul class="sub"><li><a href="#notice">공지사항</a></li><li><a href="#faq">FAQ</a></li></ul></li><li><a class="top" href="#apply">Contact</a><ul class="sub"><li><a href="#apply">서비스 신청하기</a></li></ul></li></ul></nav>
+    <nav class="gnb" aria-label="주 메뉴"><ul><li><a class="top" href="#about">스테리케어 소개</a><ul class="sub"><li><a href="#about">회사소개</a></li><li><a href="#why">선택 이유</a></li><li><a href="#history">연혁</a></li><li><a href="#location">오시는 길</a></li></ul></li><li><a class="top" href="#area">서비스안내</a><ul class="sub"><li><a href="#area">서비스 지역안내</a></li><li><a href="#quality">품질·위생관리</a></li></ul></li><li><a class="top" href="#facility">시설현황</a><ul class="sub"><li><a href="#facility">사업장 전경</a></li><li><a href="#equipment">보유장비&amp;설비</a></li></ul></li><li><a class="top" href="#notice">고객센터</a><ul class="sub"><li><a href="#notice">공지사항</a></li><li><a href="#faq">FAQ</a></li></ul></li><li><a class="top" href="#apply">Contact</a><ul class="sub"><li><a href="#apply">서비스 신청하기</a></li></ul></li></ul></nav>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
-  <div class="mnav" id="mnav" hidden><div class="wrap"><div class="mgrp"><strong>스테리케어 소개</strong><a href="#about">회사소개</a><a href="#why">선택 이유</a><a href="#history">연혁</a><a href="#location">오시는 길</a></div><div class="mgrp"><strong>서비스안내</strong><a href="#area">서비스 지역안내</a><a href="#quality">품질관리</a></div><div class="mgrp"><strong>시설현황</strong><a href="#cleanzone">감염관리 클린존</a><a href="#equipment">보유장비&amp;설비</a></div><div class="mgrp"><strong>고객센터</strong><a href="#notice">공지사항</a><a href="#faq">FAQ</a></div><div class="mgrp"><strong>Contact</strong><a href="#apply">서비스 신청하기</a></div></div></div>
+  <div class="mnav" id="mnav" hidden><div class="wrap"><div class="mgrp"><strong>스테리케어 소개</strong><a href="#about">회사소개</a><a href="#why">선택 이유</a><a href="#history">연혁</a><a href="#location">오시는 길</a></div><div class="mgrp"><strong>서비스안내</strong><a href="#area">서비스 지역안내</a><a href="#quality">품질·위생관리</a></div><div class="mgrp"><strong>시설현황</strong><a href="#facility">사업장 전경</a><a href="#equipment">보유장비&amp;설비</a></div><div class="mgrp"><strong>고객센터</strong><a href="#notice">공지사항</a><a href="#faq">FAQ</a></div><div class="mgrp"><strong>Contact</strong><a href="#apply">서비스 신청하기</a></div></div></div>
 </header>
 
 <main id="top">
@@ -398,8 +399,8 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
         <div><div class="eyebrow">Service</div><h2>바로가기</h2></div>
       </div>
       <div class="quick">
-        <a href="#quality"><span class="eyebrow">01</span><strong>품질관리</strong></a>
-        <a href="#cleanzone"><span class="eyebrow">02</span><strong>감염관리 클린존</strong></a>
+        <a href="#quality"><span class="eyebrow">01</span><strong>품질·위생관리</strong></a>
+        <a href="#facility"><span class="eyebrow">02</span><strong>사업장 전경</strong></a>
         <a href="#area"><span class="eyebrow">03</span><strong>서비스 지역안내</strong></a>
         <a href="#apply"><span class="eyebrow">04</span><strong>서비스 신청하기</strong></a>
       </div>
@@ -526,28 +527,13 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
         <div class="card"><div class="eyebrow">Head Office</div><h3>부천 본사</h3><p class="addr">경기도 부천시 부천로29번길 17, 3층</p><p class="muted">계약 · 정산 · 고객 상담</p><div class="maplinks"><a href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%B6%80%EC%B2%9C%EB%A1%9C29%EB%B2%88%EA%B8%B8%2017" target="_blank" rel="noopener">네이버 지도 ↗</a><a href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%B6%80%EC%B2%9C%EB%A1%9C29%EB%B2%88%EA%B8%B8%2017" target="_blank" rel="noopener">카카오맵 ↗</a></div></div>
       </div>
       <dl class="kv" style="margin-top:32px"><div><dt>대표번호</dt><dd>032-614-6592</dd></div><div><dt>팩스</dt><dd>032-612-6595</dd></div></dl>
-    </div>
-  </section>
-  <section id="facility">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><div class="eyebrow">Facility</div><h2>사업장 전경</h2></div>
-        <p>경기도 김포 공장에서 세탁, 건조, 다림질, 수선, 멸균까지 모두 처리합니다.</p>
-      </div>
-      <div class="gallery">
-        <figure class="wide"><img src="img/washers-1.jpg" alt="세탁 및 건조 구역"><figcaption>세탁 및 건조</figcaption></figure>
-        <figure><img src="img/ironer.jpg" alt="아이로너"><figcaption>다림질 (아이로너)</figcaption></figure>
-        <figure><img src="img/sterilizer.jpg" alt="멸균기"><figcaption>멸균</figcaption></figure>
-        <figure><img src="img/ironing.jpg" alt="다림질 작업"><figcaption>다림질</figcaption></figure>
-        <figure><img src="img/repair.jpg" alt="수선 작업"><figcaption>수선</figcaption></figure>
-        <figure class="wide"><img src="img/exterior-2.jpg" alt="공장 외부 전경"><figcaption>외부 전경</figcaption></figure>
-      </div>
+      <figure class="loc-photo"><img src="img/exterior-2.jpg" alt="스테리케어 김포 공장 외부" loading="lazy"><figcaption>김포 공장 외부</figcaption></figure>
     </div>
   </section>
   </div>
   <div class="view" data-view="area" hidden>
     <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 서비스안내 / 서비스 지역안내</div><h1>서비스 지역안내</h1></div></div>
-    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질관리</a></div></nav>
+    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질·위생관리</a></div></nav>
 
   <section>
     <div class="wrap">
@@ -583,9 +569,24 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
   </section>
   </div>
   <div class="view" data-view="quality" hidden>
-    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 서비스안내 / 품질관리</div><h1>품질관리</h1></div></div>
-    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질관리</a></div></nav>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 서비스안내 / 품질·위생관리</div><h1>품질·위생관리</h1></div></div>
+    <nav class="tabs" aria-label="서비스안내 하위 메뉴"><div class="wrap"><a href="#area" data-tab="area">서비스 지역안내</a><a href="#quality" data-tab="quality">품질·위생관리</a></div></nav>
 
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Clean Zone</div><h2>오염구역과 청결구역을 완전히 나눴습니다</h2></div>
+        <p>세탁 전 오염방지부터 교차오염 예방, 작업장 위생까지 감염관리 기준에 맞춰 설계한 작업 환경입니다.<br>세탁기의 투입구(IN)는 오염구역에, 배출구(OUT)는 청결구역에 있습니다. 세탁을 마친 세탁물이 오염구역을 다시 지나지 않아 재오염을 막습니다.</p>
+      </div>
+      <img class="inout-img" src="img/in-out.jpg" alt="투입(IN)과 배출(OUT) 구역이 벽으로 나뉜 세탁기" width="450" height="238">
+      <h3 class="sub">위생관리</h3>
+      <div class="qgrid">
+        <div class="card"><h3>세탁 전 오염방지</h3><ul><li>오염 세탁물은 밀폐 수거백·수거 전용 카트로 운반</li><li>분류·투입 작업은 오염구역에서만 실시</li><li>가운·마스크·장갑·안면보호구 착용</li></ul></div>
+        <div class="card"><h3>교차오염 예방</h3><ul><li>투입·배출 구역이 벽으로 분리된 세탁기로 오염·청결구역 완전 분리</li><li>오염 세탁물 전용 세탁기 2대, 작업 동선 분리</li><li>수거용·납품용 차량과 카트 구분 운영</li></ul></div>
+        <div class="card"><h3>작업장 위생 · 위생교육</h3><ul><li>구역별 청소·소독과 점검일지 기록</li><li>손위생, 보호구 사용법, 세탁물 취급, 소독약품, 장비 위생 정기 교육</li></ul></div>
+      </div>
+    </div>
+  </section>
   <section>
     <div class="wrap">
       <div class="sec-head">
@@ -609,29 +610,30 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
     </div>
   </section>
   </div>
-  <div class="view" data-view="cleanzone" hidden>
-    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 시설현황 / 감염관리 클린존</div><h1>감염관리 클린존</h1></div></div>
-    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#cleanzone" data-tab="cleanzone">감염관리 클린존</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
+  <div class="view" data-view="facility" hidden>
+    <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 시설현황 / 사업장 전경</div><h1>사업장 전경</h1></div></div>
+    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#facility" data-tab="facility">사업장 전경</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
 
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <div><div class="eyebrow">Clean Zone</div><h2>오염구역과 청결구역을 완전히 나눴습니다</h2></div>
-        <p>세탁 전 오염방지부터 교차오염 예방, 작업장 위생까지 감염관리 기준에 맞춰 설계한 작업 환경입니다.<br>세탁기의 투입구(IN)는 오염구역에, 배출구(OUT)는 청결구역에 있습니다. 세탁을 마친 세탁물이 오염구역을 다시 지나지 않아 재오염을 막습니다.</p>
+        <div><div class="eyebrow">Facility</div><h2>사업장 전경</h2></div>
+        <p>경기도 김포 공장에서 세탁, 건조, 다림질, 수선, 멸균까지 모두 처리합니다.</p>
       </div>
-      <img class="inout-img" src="img/in-out.jpg" alt="투입(IN)과 배출(OUT) 구역이 벽으로 나뉜 세탁기" width="450" height="238">
-      <h3 class="sub">위생관리</h3>
-      <div class="qgrid">
-        <div class="card"><h3>세탁 전 오염방지</h3><ul><li>오염 세탁물은 밀폐 수거백·수거 전용 카트로 운반</li><li>분류·투입 작업은 오염구역에서만 실시</li><li>가운·마스크·장갑·안면보호구 착용</li></ul></div>
-        <div class="card"><h3>교차오염 예방</h3><ul><li>투입·배출 구역이 벽으로 분리된 세탁기로 오염·청결구역 완전 분리</li><li>오염 세탁물 전용 세탁기 2대, 작업 동선 분리</li><li>수거용·납품용 차량과 카트 구분 운영</li></ul></div>
-        <div class="card"><h3>작업장 위생 · 위생교육</h3><ul><li>구역별 청소·소독과 점검일지 기록</li><li>손위생, 보호구 사용법, 세탁물 취급, 소독약품, 장비 위생 정기 교육</li></ul></div>
+      <div class="gallery">
+        <figure class="wide"><img src="img/washers-1.jpg" alt="세탁 및 건조 구역"><figcaption>세탁 및 건조</figcaption></figure>
+        <figure><img src="img/ironer.jpg" alt="아이로너"><figcaption>다림질 (아이로너)</figcaption></figure>
+        <figure><img src="img/sterilizer.jpg" alt="멸균기"><figcaption>멸균</figcaption></figure>
+        <figure><img src="img/ironing.jpg" alt="다림질 작업"><figcaption>다림질</figcaption></figure>
+        <figure><img src="img/repair.jpg" alt="수선 작업"><figcaption>수선</figcaption></figure>
+        <figure class="wide"><img src="img/exterior-2.jpg" alt="공장 외부 전경"><figcaption>외부 전경</figcaption></figure>
       </div>
     </div>
   </section>
   </div>
   <div class="view" data-view="equipment" hidden>
     <div class="banner"><div class="wrap"><div class="crumb"><a href="#home">홈</a> / 시설현황 / 보유장비&amp;설비</div><h1>보유장비&amp;설비</h1></div></div>
-    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#cleanzone" data-tab="cleanzone">감염관리 클린존</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
+    <nav class="tabs" aria-label="시설현황 하위 메뉴"><div class="wrap"><a href="#facility" data-tab="facility">사업장 전경</a><a href="#equipment" data-tab="equipment">보유장비&amp;설비</a></div></nav>
 
   <section>
     <div class="wrap">
@@ -766,7 +768,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
     [].slice.call(li.querySelectorAll('a')).forEach(function(a){groups[a.getAttribute('href').slice(1)]=li.querySelector('.top');});});
   var mnav=document.getElementById('mnav'),burger=document.getElementById('burger');
   function show(){
-    var h=(location.hash||'').slice(1); if(ids.indexOf(h)<0) h='home';
+    var h=(location.hash||'').slice(1); if(h==='cleanzone')h='quality'; if(ids.indexOf(h)<0) h='home';
     views.forEach(function(v){v.hidden=v.dataset.view!==h});
     document.querySelectorAll('.gnb .top').forEach(function(t){t.classList.toggle('on',groups[h]===t)});
     document.querySelectorAll('[data-tab]').forEach(function(t){t.classList.toggle('on',t.dataset.tab===h)});
