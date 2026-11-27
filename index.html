@@ -290,11 +290,8 @@ section + section{border-top:1px solid var(--line)}
 .fac circle{fill:var(--ink)}
 .fac .pulse{fill:var(--ink);opacity:.18}
 .fac text{font-family:var(--f-body);font-size:14px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px}
-.area-side h3{font-size:22px}
-.area-list{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:0;border-top:2px solid var(--ink)}
-.area-list li{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:18px}
-.area-list .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none;align-self:center}
-.area-list small{margin-left:auto;color:var(--muted);font-size:14px}
+.area-side{align-self:center}
+.area-side p{font-size:17px;line-height:1.8}
 .area-side .btn{margin-top:22px}
 @media (max-width:860px){.area-grid{grid-template-columns:1fr}.lb{font-size:15px}.lb.on{font-size:22px}}
 @media (prefers-reduced-motion:no-preference){.fac .pulse{animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}@keyframes pulse{0%{transform:scale(.6);opacity:.35}100%{transform:scale(1.8);opacity:0}}}
@@ -548,19 +545,6 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
 <g class="fac" transform="translate(263.7,317.1)"><circle r="16" class="pulse"/><circle r="7"/><text x="12" y="-12">공장</text></g>
 </svg></div>
         <div class="area-side">
-          <h3>주요 서비스 지역</h3>
-          <ul class="area-list">
-            <li><span class="dot"></span><strong>서울</strong><small>서울특별시 전역</small></li>
-            <li><span class="dot"></span><strong>인천</strong><small>인천광역시 전역</small></li>
-            <li><span class="dot"></span><strong>부천</strong></li>
-            <li><span class="dot"></span><strong>김포</strong><small>공장 소재지</small></li>
-            <li><span class="dot"></span><strong>고양</strong><small>일산 포함</small></li>
-            <li><span class="dot"></span><strong>파주</strong></li>
-            <li><span class="dot"></span><strong>양주</strong></li>
-            <li><span class="dot"></span><strong>의정부</strong></li>
-            <li><span class="dot"></span><strong>동두천</strong></li>
-            <li><span class="dot"></span><strong>포천</strong></li>
-          </ul>
           <p class="muted">김포 공장에서 수거·납품 전용 차량이 직접 다닙니다. 표시되지 않은 수도권 지역도 병원 위치와 물량에 따라 협의할 수 있습니다.</p>
           <a class="btn" href="#apply">우리 병원 지역 문의하기</a>
         </div>
