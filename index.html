@@ -764,6 +764,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
   /* 문의 양식 → Supabase inquiries 테이블. 아래 두 값을 Supabase 프로젝트 설정 > API 에서 복사해 넣으세요 */
   var SUPABASE_URL='https://twrrbmvxuiemqwqbfzpo.supabase.co';      // 예: https://abcd1234.supabase.co
   var SUPABASE_ANON_KEY='sb_publishable_EPfzbp-xcLQdzfz5jCeNBQ_Pcr3AiA9'; // Publishable key(sb_publishable_…) 또는 legacy anon 키. 공개해도 되는 키만 넣으세요(secret/service_role 금지)
+  function mailDbg(k,t){try{console.log('[web3forms]',k.slice(0,8),t);if(location.search.indexOf('mailtest')>=0){var d=document.getElementById('mail-dbg')||(function(){var x=document.createElement('pre');x.id='mail-dbg';x.style.cssText='white-space:pre-wrap;font-size:13px;margin-top:12px';document.getElementById('inq').appendChild(x);return x;})();d.textContent+='메일 알림 '+k.slice(0,8)+': '+t+'\n';}}catch(_){}}
   function sbHeaders(){var h={'apikey':SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};if(SUPABASE_ANON_KEY.indexOf('eyJ')===0)h['Authorization']='Bearer '+SUPABASE_ANON_KEY;return h;}
   var f=document.getElementById('inq'),msg=document.getElementById('formmsg'),btn=document.getElementById('f-submit');
   function say(t){msg.textContent=t;msg.hidden=false;}
@@ -775,7 +776,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
     if(!SUPABASE_URL||!SUPABASE_ANON_KEY){say('문의 접수 준비 중입니다. 대표번호 032-614-6592로 연락해 주세요.');return;}
     btn.disabled=true;say('보내는 중입니다…');
     /* 이메일 알림: Web3Forms(무료, 월 250건)로 같은 내용을 메일 발송. 실패해도 Supabase 접수에는 영향 없음 */
-    try{['936be827-5a5f-44e6-b03a-f4d2311bf2a4','db498de4-b36e-434d-af26-5528beabd0ee'].forEach(function(k){fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:k,subject:'[스테리케어 홈페이지] 새 세탁 위탁 문의 - '+(v('f-org')||v('f-name')),from_name:'스테리케어 홈페이지','기관명':v('f-org'),'담당자':v('f-name'),'연락처':v('f-tel'),'문의 유형':v('f-type'),'문의 내용':v('f-msg')})}).catch(function(){});});}catch(_){}
+    try{['936be827-5a5f-44e6-b03a-f4d2311bf2a4','db498de4-b36e-434d-af26-5528beabd0ee'].forEach(function(k){fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:k,subject:'[스테리케어 홈페이지] 새 세탁 위탁 문의 - '+(v('f-org')||v('f-name')),from_name:'스테리케어 홈페이지','기관명':v('f-org'),'담당자':v('f-name'),'연락처':v('f-tel'),'문의 유형':v('f-type'),'문의 내용':v('f-msg')})}).then(function(r){return r.json().then(function(j){mailDbg(k,r.status+' '+(j&&j.message||''));});}).catch(function(e){mailDbg(k,'네트워크 오류 '+e);});});}catch(_){}
     fetch(SUPABASE_URL+'/rest/v1/inquiries',{method:'POST',headers:sbHeaders(),
       body:JSON.stringify({org:v('f-org'),name:v('f-name'),tel:v('f-tel'),type:v('f-type'),message:v('f-msg')})})
     .then(function(r){if(!r.ok)throw new Error(r.status);f.reset();say('문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.');})
