@@ -222,7 +222,7 @@ section + section{border-top:1px solid var(--line)}
 .eq-tbl{width:100%;border-collapse:collapse;font-size:15px}
 .eq-tbl th{font-weight:500;color:var(--muted);font-size:12.5px;text-align:left;padding:10px 20px 6px}
 .eq-tbl td{padding:12px 20px;border-top:1px solid var(--line);vertical-align:middle}
-.eq-tbl thead + tbody tr:first-child td{border-top:0}
+.eq-tbl thead + tbody tr:first-child td,.eq-tbl tbody:first-child tr:first-child td{border-top:0}
 .eq-tbl th.n,.eq-tbl td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;width:64px}
 .eq-tbl th.n:last-child,.eq-tbl td.n:last-child{width:150px}
 .eq-tbl td b{display:block;font-weight:700}
@@ -668,15 +668,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
             </table>
           </div>
           <div class="eq-grp">
-            <div class="eq-hd"><h3>멸균</h3><span>8시간 가동 기준</span></div>
-            <table class="eq-tbl">
-              <tbody>
-                <tr class="hl"><td><b>멸균기</b><small>1000L · 80kW · <span style="white-space:nowrap">1회 500kg / 60분</span></small></td><td class="n">1대</td><td class="n d">4,000kg</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="eq-grp">
-            <div class="eq-hd"><h3>건조 · 마감 · 기타 설비</h3></div>
+            <div class="eq-hd"><h3>건조기 및 그 외</h3></div>
             <ul class="eq-list">
               <li><div><b>스팀건조기</b><small>100kg</small></div><em>4대</em></li>
               <li><div><b>아이로너</b><small>1,200Ø × 4Roll</small></div><em>1대</em></li>
@@ -686,6 +678,14 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
               <li><div><b>자동 재봉틀</b></div><em>1대</em></li>
               <li><div><b>콤프레샤</b><small>20마력</small></div><em>1대</em></li>
             </ul>
+          </div>
+          <div class="eq-grp">
+            <div class="eq-hd"><h3>멸균</h3><span>8시간 가동 기준</span></div>
+            <table class="eq-tbl">
+              <tbody>
+                <tr><td><b>멸균기</b><small>1000L · 80kW · <span style="white-space:nowrap">1회 500kg / 60분</span></small></td><td class="n">1대</td><td class="n d">4,000kg</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
