@@ -762,8 +762,8 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
   burger.addEventListener('click',function(){mnav.hidden=!mnav.hidden;burger.setAttribute('aria-expanded',String(!mnav.hidden));});
   window.addEventListener('hashchange',show);show();
   /* 문의 양식 → Supabase inquiries 테이블. 아래 두 값을 Supabase 프로젝트 설정 > API 에서 복사해 넣으세요 */
-  var SUPABASE_URL='';      // 예: https://abcd1234.supabase.co
-  var SUPABASE_ANON_KEY=''; // Publishable key(sb_publishable_…) 또는 legacy anon 키. 공개해도 되는 키만 넣으세요(secret/service_role 금지)
+  var SUPABASE_URL='https://twrrbmvxuiemqwqbfzpo.supabase.co';      // 예: https://abcd1234.supabase.co
+  var SUPABASE_ANON_KEY='sb_publishable_EPfzbp-xcLQdzfz5jCeNBQ_Pcr3AiA9'; // Publishable key(sb_publishable_…) 또는 legacy anon 키. 공개해도 되는 키만 넣으세요(secret/service_role 금지)
   function sbHeaders(){var h={'apikey':SUPABASE_ANON_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};if(SUPABASE_ANON_KEY.indexOf('eyJ')===0)h['Authorization']='Bearer '+SUPABASE_ANON_KEY;return h;}
   var f=document.getElementById('inq'),msg=document.getElementById('formmsg'),btn=document.getElementById('f-submit');
   function say(t){msg.textContent=t;msg.hidden=false;}
