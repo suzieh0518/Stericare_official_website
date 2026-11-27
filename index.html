@@ -214,12 +214,30 @@ section + section{border-top:1px solid var(--line)}
 .big strong{display:block;font-family:var(--f-display);font-size:44px;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
 .big span{display:block;margin-top:6px;font-weight:500}
 .big p{font-size:14px;color:var(--muted);margin-top:4px}
-.tbl{overflow-x:auto;border-top:2px solid var(--ink)}
-.tbl table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
-.tbl th,.tbl td{text-align:left;padding:11px 10px 11px 0;border-bottom:1px solid var(--line)}
-.tbl th{font-weight:500;color:var(--muted);font-size:13px}
-.tbl td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-.tbl tr.sum td{font-weight:700}
+.eq{display:grid;gap:18px}
+.eq-grp{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.eq-hd{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;padding:14px 20px;border-bottom:1px solid var(--line);border-left:4px solid var(--accent)}
+.eq-hd h3{font-size:17px;line-height:1.4}
+.eq-hd span{font-size:13px;color:var(--muted)}
+.eq-tbl{width:100%;border-collapse:collapse;font-size:15px}
+.eq-tbl th{font-weight:500;color:var(--muted);font-size:12.5px;text-align:left;padding:10px 20px 6px}
+.eq-tbl td{padding:12px 20px;border-top:1px solid var(--line);vertical-align:middle}
+.eq-tbl thead + tbody tr:first-child td{border-top:0}
+.eq-tbl th.n,.eq-tbl td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;width:64px}
+.eq-tbl th.n:last-child,.eq-tbl td.n:last-child{width:150px}
+.eq-tbl td b{display:block;font-weight:700}
+.eq-tbl td small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.eq-tbl td.d{font-family:var(--f-display);font-size:19px;font-weight:700}
+.eq-tbl tfoot td,.eq-tbl tr.hl td{background:var(--accent-soft);border-top:1px solid var(--line);font-weight:700}
+.eq-tbl tfoot td.d,.eq-tbl tr.hl td.d{font-family:var(--f-display);font-size:26px;color:var(--accent);line-height:1.2}
+.eq-list{list-style:none;margin:0;padding:6px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.eq-list li{display:flex;align-items:center;gap:10px;padding:10px 20px;min-width:0}
+.eq-list li div{flex:1;min-width:0}
+.eq-list b{display:block;font-weight:700;font-size:15px}
+.eq-list small{display:block;font-size:13px;color:var(--muted)}
+.eq-list em{font-style:normal;font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px;white-space:nowrap}
+@media (min-width:861px){.big{position:sticky;top:96px}}
+@media (max-width:480px){.eq-tbl th.n:last-child,.eq-tbl td.n:last-child{width:110px}.eq-hd,.eq-tbl th,.eq-tbl td,.eq-list li{padding-left:14px;padding-right:14px}.eq-tbl tfoot td.d,.eq-tbl tr.hl td.d{font-size:22px}}
 @media (max-width:860px){.cap{grid-template-columns:1fr}.big{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.big{grid-template-columns:1fr}}
 
@@ -636,22 +654,39 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
           <div><strong>8,040kg</strong><span>1일 세탁 처리능력</span><p>단독 세탁기 7대, 10시간 가동 기준</p></div>
           <div><strong>4,000kg</strong><span>1일 멸균 처리능력</span><p>1000L 멸균기, 1회 500kg / 60분</p></div>
         </div>
-        <div class="tbl">
-          <table>
-            <thead><tr><th>장비</th><th>용량</th><th>수량</th><th>1회 처리</th><th>1일 처리량</th></tr></thead>
-            <tbody>
-              <tr><td>In-Out 분리형 단독세탁기</td><td class="n">110kg</td><td class="n">1</td><td class="n">110kg / 50분</td><td class="n">1,320kg</td></tr>
-              <tr><td>In-Out 분리형 단독세탁기</td><td class="n">100kg</td><td class="n">5</td><td class="n">100kg / 50분</td><td class="n">6,000kg</td></tr>
-              <tr><td>단독세탁기</td><td class="n">60kg</td><td class="n">1</td><td class="n">60kg / 50분</td><td class="n">720kg</td></tr>
-              <tr class="sum"><td>세탁 합계 (10시간 기준)</td><td></td><td class="n">7</td><td></td><td class="n">8,040kg</td></tr>
-              <tr><td>멸균기</td><td class="n">1000L · 80kW</td><td class="n">1</td><td class="n">500kg / 60분</td><td class="n">4,000kg (8시간)</td></tr>
-              <tr><td>스팀건조기</td><td class="n">100kg</td><td class="n">4</td><td></td><td></td></tr>
-              <tr><td>아이로너</td><td class="n">1,200Ø × 4Roll</td><td class="n">1</td><td></td><td></td></tr>
-              <tr><td>폴더기</td><td class="n">3,200mm</td><td class="n">1</td><td></td><td></td></tr>
-              <tr><td>보일러</td><td class="n">800kg · 500kg</td><td class="n">2</td><td></td><td></td></tr>
-              <tr><td>벤딩포장기 · 자동 재봉틀 · 콤프레샤(20마력)</td><td></td><td class="n">3 · 1 · 1</td><td></td><td></td></tr>
-            </tbody>
-          </table>
+        <div class="eq">
+          <div class="eq-grp">
+            <div class="eq-hd"><h3>세탁</h3><span>10시간 가동 기준</span></div>
+            <table class="eq-tbl">
+              <thead><tr><th>장비</th><th class="n">수량</th><th class="n">1일 처리량</th></tr></thead>
+              <tbody>
+                <tr><td><b>In-Out 분리형 단독세탁기</b><small>110kg · 1회 50분</small></td><td class="n">1대</td><td class="n d">1,320kg</td></tr>
+                <tr><td><b>In-Out 분리형 단독세탁기</b><small>100kg · 1회 50분</small></td><td class="n">5대</td><td class="n d">6,000kg</td></tr>
+                <tr><td><b>단독세탁기</b><small>60kg · 1회 50분</small></td><td class="n">1대</td><td class="n d">720kg</td></tr>
+              </tbody>
+              <tfoot><tr><td>세탁 합계</td><td class="n">7대</td><td class="n d">8,040kg</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="eq-grp">
+            <div class="eq-hd"><h3>멸균</h3><span>8시간 가동 기준</span></div>
+            <table class="eq-tbl">
+              <tbody>
+                <tr class="hl"><td><b>멸균기</b><small>1000L · 80kW · <span style="white-space:nowrap">1회 500kg / 60분</span></small></td><td class="n">1대</td><td class="n d">4,000kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="eq-grp">
+            <div class="eq-hd"><h3>건조 · 마감 · 기타 설비</h3></div>
+            <ul class="eq-list">
+              <li><div><b>스팀건조기</b><small>100kg</small></div><em>4대</em></li>
+              <li><div><b>아이로너</b><small>1,200Ø × 4Roll</small></div><em>1대</em></li>
+              <li><div><b>폴더기</b><small>3,200mm</small></div><em>1대</em></li>
+              <li><div><b>보일러</b><small>800kg · 500kg</small></div><em>2대</em></li>
+              <li><div><b>벤딩포장기</b></div><em>3대</em></li>
+              <li><div><b>자동 재봉틀</b></div><em>1대</em></li>
+              <li><div><b>콤프레샤</b><small>20마력</small></div><em>1대</em></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
