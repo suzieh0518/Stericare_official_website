@@ -709,8 +709,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
           <div><dt>공장</dt><dd>경기도 김포시 통진읍 귀전로154번길 93</dd></div>
           <div><dt>상담 시간</dt><dd>평일 08:30 – 17:30</dd></div>
         </dl>
-        <form id="inq" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="inquiry"><p hidden><label>비워두세요<input name="bot-field"></label></p>
+        <form id="inq" novalidate>
           <div class="two">
             <label for="f-org">기관명<input id="f-org" name="org" placeholder="예: OO병원"></label>
             <label for="f-name">담당자<input id="f-name" name="name" placeholder="이름"></label>
@@ -775,8 +774,8 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
     if(!document.getElementById('f-agree').checked){say('개인정보 수집·이용에 동의해 주세요.');return;}
     if(!SUPABASE_URL||!SUPABASE_ANON_KEY){say('문의 접수 준비 중입니다. 대표번호 032-614-6592로 연락해 주세요.');return;}
     btn.disabled=true;say('보내는 중입니다…');
-    /* 이메일 알림용: Netlify Forms에도 같은 내용을 보냅니다(실패해도 접수에는 영향 없음) */
-    try{fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({'form-name':'inquiry',org:v('f-org'),name:v('f-name'),tel:v('f-tel'),type:v('f-type'),msg:v('f-msg'),agree:'on'}).toString()}).catch(function(){});}catch(_){}
+    /* 이메일 알림: Web3Forms(무료, 월 250건)로 같은 내용을 메일 발송. 실패해도 Supabase 접수에는 영향 없음 */
+    try{fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:'936be827-5a5f-44e6-b03a-f4d2311bf2a4',subject:'[스테리케어 홈페이지] 새 세탁 위탁 문의 - '+(v('f-org')||v('f-name')),from_name:'스테리케어 홈페이지','기관명':v('f-org'),'담당자':v('f-name'),'연락처':v('f-tel'),'문의 유형':v('f-type'),'문의 내용':v('f-msg')})}).catch(function(){});}catch(_){}
     fetch(SUPABASE_URL+'/rest/v1/inquiries',{method:'POST',headers:sbHeaders(),
       body:JSON.stringify({org:v('f-org'),name:v('f-name'),tel:v('f-tel'),type:v('f-type'),message:v('f-msg')})})
     .then(function(r){if(!r.ok)throw new Error(r.status);f.reset();say('문의가 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.');})
