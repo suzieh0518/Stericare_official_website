@@ -324,6 +324,19 @@ section + section{border-top:1px solid var(--line)}
 @media (max-width:520px){.timeline li{grid-template-columns:1fr;gap:2px}}
 
 /* contact */
+/* family brand */
+section.fam-sec{padding-top:0;border-top:0}
+.fam{display:grid;grid-template-columns:1.1fr 1fr;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.fam img{display:block;width:100%;height:100%;aspect-ratio:16/10;object-fit:cover}
+.fam-txt{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;min-width:0}
+.fam-txt h3{font-size:24px;line-height:1.35}
+.fam-txt p{color:var(--muted)}
+.fam-txt .btn{margin-top:8px}
+@media (max-width:760px){.fam{grid-template-columns:1fr}.fam-txt{padding:24px}}
+.form-note{font-size:14px;background:var(--accent-soft);border-radius:4px;padding:10px 14px}
+.form-note a{color:var(--accent);font-weight:700}
+footer .fam-link a{color:var(--ink);font-weight:700;text-decoration:none;margin-left:6px}
+footer .fam-link a:hover{color:var(--accent)}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .contact > *{min-width:0}
 form{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;gap:16px}
@@ -451,6 +464,19 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
         <div><h4>병원 전담 담당자</h4><p>수거, 납품, 클레임을 하나의 창구에서 처리합니다.</p></div>
         <div><h4>품질책임자 제도</h4><p>품질 문제는 작업자가 임의로 판단하지 않고 품질책임자가 최종 결정합니다.</p></div>
         <div><h4>주간 품질회의</h4><p>매주 월요일 개선과제를 정하고, 다음 주에 효과를 평가합니다.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="fam-sec">
+    <div class="wrap">
+      <div class="fam">
+        <img src="img/regen75-inspection.jpg" alt="ReGen75 작업장에서 LED 테이블 위의 재사용 가운을 검수하는 모습" width="1162" height="747" loading="lazy">
+        <div class="fam-txt">
+          <div class="eyebrow">Family Brand</div>
+          <h3>재사용 가운은 ReGen75</h3>
+          <p>재사용 가운 렌탈·납품은 협력 브랜드 ReGen75가 운영합니다.</p>
+          <a class="btn" href="https://regen75.com/" target="_blank" rel="noopener">ReGen75 바로가기 <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -751,6 +777,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
           <div><dt>상담 시간</dt><dd>평일 08:30 – 17:30</dd></div>
         </dl>
         <form id="inq" novalidate>
+          <p class="form-note">재사용 가운 렌탈·납품 문의는 <a href="https://regen75.com/" target="_blank" rel="noopener">ReGen75 홈페이지</a>로 해 주세요.</p>
           <div class="two">
             <label for="f-org">기관명<input id="f-org" name="org" placeholder="예: OO병원"></label>
             <label for="f-name">담당자<input id="f-name" name="name" placeholder="이름"></label>
@@ -781,6 +808,7 @@ footer .meta{display:flex;flex-wrap:wrap;gap:4px 18px}
       <span>공장 경기도 김포시 통진읍 귀전로154번길 93</span>
       <span>T. 032-614-6592</span>
     </div>
+    <div class="fam-link">Family site<a href="https://regen75.com/" target="_blank" rel="noopener">ReGen75 ↗</a></div>
     <span>© 2026 STERICARE. ALL RIGHTS RESERVED.</span>
   </div>
 </footer>
